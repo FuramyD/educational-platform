@@ -35,10 +35,26 @@
                         "style": "kebab-case"
                     }
                 ],
-                "quotes": [1, "double", "avoid-escape"],
-                "object-curly-spacing": ["warn", "always"],
-                "semi": ["warn", "always"],
-                "indent": ["warn", 4]
+                "quotes": [
+                    1,
+                    "double",
+                    "avoid-escape"
+                ],
+                "object-curly-spacing": [
+                    "warn",
+                    "always"
+                ],
+                "semi": [
+                    "warn",
+                    "always"
+                ],
+                "indent": [
+                    "warn",
+                    4,
+                    {
+                        "SwitchCase": 1
+                    }
+                ]
             }
         },
         {
