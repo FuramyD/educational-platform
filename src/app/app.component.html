@@ -3,6 +3,11 @@
 <ng-template #authorization>Authorization Page</ng-template>
 
 <ng-template #mainPage>
+    <button (click)="_onButtonClick()">Test Request</button>
+    <div>
+        Response:
+        <pre>{{ response | json }}</pre>
+    </div>
     <ep-navigation-bar></ep-navigation-bar>
     <router-outlet></router-outlet>
 </ng-template>
