@@ -17,9 +17,13 @@ export class UserService {
     public getUserById(id: string): Observable<User> {
         return this.restApiService.get<User>("getUserById", {
             urlParameters: { id },
-            request: {
-                ...this.authService.getAuthorizationParams()
-            }
+            request: this.authService.getAuthorizationOptions()
+        });
+    }
+
+    public getAllUsers(): Observable<User[]> {
+        return this.restApiService.get<User[]>("getAllUsers", {
+            request: this.authService.getAuthorizationOptions()
         });
     }
 }

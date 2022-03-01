@@ -1,7 +1,8 @@
 <ng-container *ngIf="_isAuthorized then mainPage else authorization"></ng-container>
 
-<ng-template #authorization></ng-template>
+<ng-template #authorization>Authorization Page</ng-template>
 
 <ng-template #mainPage>
+    <ep-navigation-bar></ep-navigation-bar>
     <router-outlet></router-outlet>
 </ng-template>

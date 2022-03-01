@@ -1,9 +1,15 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { PROVIDED_SERVICES } from "./services/provided-services";
+import { EpHttpInterceptor } from "./http.interseptor";
+import { StoreModule } from "@ngrx/store";
+import { EpStoreModule, reducers } from "./store/store.module";
+import { EffectsModule } from "@ngrx/effects";
+import { ViewsModule } from "./views/views.module";
+import { EpCommonModule } from "./modules/common/common.module";
 
 @NgModule({
     declarations: [
@@ -12,9 +18,21 @@ import { HttpClientModule } from "@angular/common/http";
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        EpStoreModule,
+        EffectsModule.forRoot([]),
+        StoreModule.forRoot(reducers, {}),
+        ViewsModule,
+        EpCommonModule
     ],
-    providers: [],
+    providers: [
+        ...PROVIDED_SERVICES,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: EpHttpInterceptor,
+            multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

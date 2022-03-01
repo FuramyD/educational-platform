@@ -7,7 +7,7 @@ import { HttpHeaders } from "@angular/common/http";
 })
 export class AuthService {
 
-    public getAuthorizationParams(): RestApiRequestOptions {
+    public getAuthorizationOptions(): RestApiRequestOptions {
         const token = window.sessionStorage.getItem("access_token");
         const headers = new HttpHeaders().append("Authorization", `Bearer ${token}`);
         return { headers };

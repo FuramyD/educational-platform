@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { catchError, EMPTY, Observable } from "rxjs";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { catchError, EMPTY, Observable, throwError } from "rxjs";
 import { RestApiData, RestApiMethod, RestApiOptions } from "../models/rest-api.model";
 import { apiRoutes } from "../api/api.routes";
 
@@ -11,8 +11,12 @@ export class RestApiService {
 
     constructor(private http: HttpClient) { }
 
-    private static handleError(error: any): void {
-        console.error(error);
+    private static handleError(error: HttpErrorResponse) {
+        error.status === 0
+            ? console.error("An error occurred:", error.error)
+            : console.error(`Backend returned code ${error.status}, body was: `, error.error);
+
+        return throwError(() => new Error("Something bad happened; please try again later."));
     }
 
     private getRequestByType<T = unknown>(data: RestApiData): Observable<T> {
@@ -69,7 +73,7 @@ export class RestApiService {
 
     public put<T = unknown>(route: string, body: unknown, options: RestApiOptions = {}): Observable<T> {
         return this.getRequestByType({
-            method: RestApiMethod.POST,
+            method: RestApiMethod.PUT,
             route,
             options,
             body
@@ -78,7 +82,7 @@ export class RestApiService {
 
     public patch<T = unknown>(route: string, body: unknown, options: RestApiOptions = {}): Observable<T> {
         return this.getRequestByType({
-            method: RestApiMethod.POST,
+            method: RestApiMethod.PATCH,
             route,
             options,
             body
@@ -87,7 +91,7 @@ export class RestApiService {
 
     public delete<T = unknown>(route: string, options: RestApiOptions = {}): Observable<T> {
         return this.getRequestByType({
-            method: RestApiMethod.POST,
+            method: RestApiMethod.DELETE,
             route,
             options
         });
