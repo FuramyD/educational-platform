@@ -1,0 +1,54 @@
+@import "../../../../../assets/styles/variables";
+@import "../../../../../assets/styles/colors";
+@import "../../../../../assets/styles/fonts";
+
+@header-height: 80px;
+
+.ep-user-dashboard {
+    &__header {
+        height: @header-height;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &-greetings {
+            display: flex;
+            align-items: center;
+
+            .font-regular-size-height(24px, 32px);
+
+            .menu-icon {
+                margin-right: @size-l;
+                cursor: pointer;
+            }
+
+            .text-notification {
+                margin-left: @size-l;
+                .font-regular-size-height(12px, 16px);
+
+                .link {
+                    color: @main-blue;
+                    cursor: pointer;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        &-user-info {
+            display: flex;
+            align-items: center;
+        }
+    }
+    &__content {
+        &-main {
+
+        }
+        &-sidebar {
+
+        }
+    }
+}

@@ -10,6 +10,9 @@ import { EpStoreModule, reducers } from "./store/store.module";
 import { EffectsModule } from "@ngrx/effects";
 import { ViewsModule } from "./views/views.module";
 import { EpCommonModule } from "./modules/common/common.module";
+import { SvgIconsModule } from "@ngneat/svg-icon";
+import { completeIconSet } from "../assets/icons/icons";
+import { iconSizes } from "../assets/icons/sizes";
 
 @NgModule({
     declarations: [
@@ -23,7 +26,11 @@ import { EpCommonModule } from "./modules/common/common.module";
         EffectsModule.forRoot([]),
         StoreModule.forRoot(reducers, {}),
         ViewsModule,
-        EpCommonModule
+        EpCommonModule,
+        SvgIconsModule.forRoot({
+            icons: completeIconSet,
+            sizes: iconSizes
+        })
     ],
     providers: [
         ...PROVIDED_SERVICES,

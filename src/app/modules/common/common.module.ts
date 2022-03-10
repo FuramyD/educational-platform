@@ -1,26 +1,20 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NavigationBarComponent } from "./navigation-bar/navigation-bar.component";
-import { IconComponent, ICONS_PATH } from "./icon/icon.component";
-
-
+import { SvgIconsModule } from "@ngneat/svg-icon";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     declarations: [
-        NavigationBarComponent,
-        IconComponent
+        NavigationBarComponent
     ],
     exports: [
         NavigationBarComponent
     ],
     imports: [
-        CommonModule
-    ],
-    providers: [
-        {
-            provide: ICONS_PATH,
-            useValue: "assets/icons",
-        },
+        CommonModule,
+        SvgIconsModule,
+        RouterModule
     ]
 })
 export class EpCommonModule { }
