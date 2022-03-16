@@ -41,4 +41,8 @@ export class RegistrationComponent implements OnInit {
         });
     }
 
+    _navigateToLogin(): void {
+        this.router.navigate([RoutePaths.AUTHENTICATION, RoutePaths.LOGIN]);
+    }
+
 }
