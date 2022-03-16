@@ -2,14 +2,20 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { UserDashboardPageComponent } from "./user-dashboard-page/user-dashboard-page.component";
 import { UserDashboardModule } from "../modules/user-dashboard/user-dashboard.module";
+import { RouterPageComponent } from "./router-page/router-page.component";
+import { AppRoutingModule } from "../app-routing.module";
+import { EpCommonModule } from "../modules/common/common.module";
 
 @NgModule({
     declarations: [
-        UserDashboardPageComponent
+        UserDashboardPageComponent,
+        RouterPageComponent
     ],
     imports: [
         CommonModule,
-        UserDashboardModule
+        UserDashboardModule,
+        AppRoutingModule,
+        EpCommonModule
     ]
 })
 export class ViewsModule { }

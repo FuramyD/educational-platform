@@ -1,0 +1,17 @@
+<div class="ep-text-field">
+    <label class="ep-text-field__label"
+           [class._focused]="_focused || _dirty"
+           [for]="controlName"
+    >{{ label }}</label>
+    <input
+        type="text"
+        class="ep-text-field__input"
+        [id]="controlName"
+        [class._focused]="_focused || _dirty"
+        [formControlName]="controlName"
+        (focus)="_onFocus()"
+        (blur)="_onBlur()"
+        (input)="_onChange($event)"
+    >
+</div>
+

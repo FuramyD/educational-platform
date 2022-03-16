@@ -13,6 +13,8 @@ import { EpCommonModule } from "./modules/common/common.module";
 import { SvgIconsModule } from "@ngneat/svg-icon";
 import { completeIconSet } from "../assets/icons/icons";
 import { iconSizes } from "../assets/icons/sizes";
+import { AuthModule } from "./modules/login/auth.module";
+import { AuthGuard } from "./api/auth.guard";
 
 @NgModule({
     declarations: [
@@ -27,6 +29,7 @@ import { iconSizes } from "../assets/icons/sizes";
         StoreModule.forRoot(reducers, {}),
         ViewsModule,
         EpCommonModule,
+        AuthModule,
         SvgIconsModule.forRoot({
             icons: completeIconSet,
             sizes: iconSizes
@@ -34,6 +37,7 @@ import { iconSizes } from "../assets/icons/sizes";
     ],
     providers: [
         ...PROVIDED_SERVICES,
+        AuthGuard,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: EpHttpInterceptor,
