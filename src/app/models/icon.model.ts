@@ -1,5 +1,5 @@
 import { SVG_CONFIG } from "@ngneat/svg-icon/lib/types";
-import { myIcons } from "../../assets/icons/icons";
+import { myIcons } from "../common/icons/icons";
 
 export interface Icon {
     icon: myIcons;

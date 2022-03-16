@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "generate-icons": "svg-to-ts-constants -s './src/assets/svg/*.svg' -o './src/assets/icons' -f 'icons'"
+    "generate-icons": "svg-to-ts-constants -s './src/assets/svg/*.svg' -o './src/app/common/icons' -f 'icons'"
   },
   "private": true,
   "dependencies": {

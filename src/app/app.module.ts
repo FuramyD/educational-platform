@@ -11,8 +11,8 @@ import { EffectsModule } from "@ngrx/effects";
 import { ViewsModule } from "./views/views.module";
 import { EpCommonModule } from "./modules/common/common.module";
 import { SvgIconsModule } from "@ngneat/svg-icon";
-import { completeIconSet } from "../assets/icons/icons";
-import { iconSizes } from "../assets/icons/sizes";
+import { completeIconSet } from "./common/icons/icons";
+import { iconSizes } from "./common/icons/sizes";
 import { AuthModule } from "./modules/login/auth.module";
 import { AuthGuard } from "./api/auth.guard";
 
