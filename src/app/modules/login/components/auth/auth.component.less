@@ -28,6 +28,10 @@
         &-title {
             display: flex;
             align-items: center;
+
+            width: 100%;
+            max-width: @form-max-width;
+
             .logo {
                 width: @logo-width;
                 height: @logo-height;
@@ -56,9 +60,11 @@
         justify-content: center;
         align-items: center;
 
-        padding: 0 @size-lx;
+        padding: @size-l @size-lx;
+        overflow: auto;
 
         &-wrapper {
+            margin: auto;
             width: 100%;
             max-width: @form-max-width;
         }
@@ -73,5 +79,24 @@
         align-items: flex-end;
 
         background: rgba(@green, .2);
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    @auth-max-width: 100%;
+
+    .ep-auth-page {
+        &__vector {
+            display: none;
+        }
+
+        &__wrapper {
+            max-width: @auth-max-width;
+        }
     }
 }

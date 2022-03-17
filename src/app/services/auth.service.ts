@@ -1,11 +1,13 @@
-import { Injectable } from "@angular/core";
+import { Inject, Injectable } from "@angular/core";
 import { RestApiRequestOptions } from "../models/rest-api.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, switchMap } from "rxjs";
 import { LoginParameters, RegistrationParameters } from "../models/login.model";
-import { User } from "../models/user.model";
-import { RegistrationResponse } from "../models/response.model";
+import { AuthorizationResponse, ProfileResponse, RegistrationResponse } from "../models/response.model";
 import { apiRoutes } from "../api/api.routes";
+import { RestApiService } from "./rest-api.service";
+import { LOCAL_STORAGE } from "../common/tokens/browser.tokens";
+import { ACCESS_TOKEN } from "../common/constants/api.constants";
 
 @Injectable({
     providedIn: "root"
@@ -13,20 +15,33 @@ import { apiRoutes } from "../api/api.routes";
 export class AuthService {
 
     constructor(
-        private http: HttpClient
+        @Inject(LOCAL_STORAGE) private localStorageRef: Storage,
+        private http: HttpClient,
+        private restApiService: RestApiService
     ) {}
 
     public static isLoggedIn: boolean = false;
 
     public getAuthorizationOptions(): RestApiRequestOptions {
-        const token = window.sessionStorage.getItem("access_token");
+        const token = this.localStorageRef.getItem(ACCESS_TOKEN);
         const headers = new HttpHeaders().append("Authorization", `Bearer ${token}`);
         return { headers };
     }
 
-    public login(loginParameters: LoginParameters): Observable<User> {
+    public getCurrentProfile(): Observable<ProfileResponse> {
+        return this.restApiService.get<ProfileResponse>("profile", {
+            request: this.getAuthorizationOptions()
+        });
+    }
+
+    public login(loginParameters: LoginParameters): Observable<ProfileResponse> {
         const url = `${apiRoutes.gateways.publicGateWay}/${apiRoutes.urls["login"]}`;
-        return this.http.post<User>(url, loginParameters);
+        return this.http.post<AuthorizationResponse>(url, loginParameters).pipe(
+            switchMap((response: AuthorizationResponse) => {
+                this.localStorageRef.setItem(ACCESS_TOKEN, response.accessToken);
+                return this.getCurrentProfile();
+            })
+        );
     }
 
     public registration(registrationParameters: RegistrationParameters): Observable<RegistrationResponse> {

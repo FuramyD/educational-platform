@@ -27,12 +27,26 @@ export const myIconChevronRight: {
     name: "chevron_right",
     data: "<svg width=\"24\" height=\"24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.5 7a.999.999 0 0 0-.707 1.707l3.305 3.305-3.18 3.293a1 1 0 0 0 1.439 1.39l3.862-4a1 1 0 0 0-.012-1.402l-4-4A.997.997 0 0 0 10.5 7Z\" fill=\"currentColor\"/></svg>"
 };
+export const myIconClosedEye: {
+  name: "closed_eye";
+  data: string;
+} = {
+    name: "closed_eye",
+    data: "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\"><path d=\"M6.213 3.797 8.19 5.775l1.695 1.693 2.032 2.034h.002l2.58 2.579v.004l2.032 2.032a.04.04 0 0 0 .001-.003l2.284 2.285-.002.001 1.386 1.387a1 1 0 0 1-1.32 1.498l-.095-.084-1.639-1.638C15.688 18.409 13.95 19 12 19c-6 0-10-5.6-10-7 0-.89 1.618-3.48 4.34-5.247L4.8 5.21a1 1 0 0 1 1.414-1.414zM7 12a5 5 0 0 0 8.322 3.737l-1.774-1.773a2.5 2.5 0 0 1-3.51-3.512L8.263 8.678A4.981 4.981 0 0 0 7 12zm5-7c6 0 10 5.6 10 7 0 .552-.621 1.755-1.74 3.012l-3.266-3.265a5 5 0 0 0-4.741-4.74l-1.87-1.87A9.628 9.628 0 0 1 12 5z\" fill=\"currentColor\"/></svg>"
+};
 export const myIconDashboard: {
   name: "dashboard";
   data: string;
 } = {
     name: "dashboard",
     data: "<svg width=\"24\" height=\"24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M22 8.27V4.23C22 2.64 21.36 2 19.77 2h-4.04c-1.59 0-2.23.64-2.23 2.23v4.04c0 1.59.64 2.23 2.23 2.23h4.04c1.59 0 2.23-.64 2.23-2.23ZM10.5 8.52V3.98C10.5 2.57 9.86 2 8.27 2H4.23C2.64 2 2 2.57 2 3.98v4.53c0 1.42.64 1.98 2.23 1.98h4.04c1.59.01 2.23-.56 2.23-1.97ZM10.5 19.77v-4.04c0-1.59-.64-2.23-2.23-2.23H4.23c-1.59 0-2.23.64-2.23 2.23v4.04C2 21.36 2.64 22 4.23 22h4.04c1.59 0 2.23-.64 2.23-2.23Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M15 15.5h6M15 19.5h6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg>"
+};
+export const myIconEye: {
+  name: "eye";
+  data: string;
+} = {
+    name: "eye",
+    data: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><g fill=\"none\" fill-rule=\"evenodd\"><path d=\"M0 0h24v24H0z\"/><path d=\"M12 19c-6 0-10-5.6-10-7 0-1.4 4-7 10-7s10 5.6 10 7c0 1.4-4 7-10 7zm0-2a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm.001-2.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z\" fill=\"currentColor\"/></g></svg>"
 };
 export const myIconFolderOpen: {
   name: "folder_open";
@@ -109,7 +123,9 @@ export type myIcons =
   | "calendar"
   | "chevron_left"
   | "chevron_right"
+  | "closed_eye"
   | "dashboard"
+  | "eye"
   | "folder_open"
   | "logo"
   | "logout"
@@ -130,7 +146,9 @@ export const completeIconSet = [
     myIconCalendar,
     myIconChevronLeft,
     myIconChevronRight,
+    myIconClosedEye,
     myIconDashboard,
+    myIconEye,
     myIconFolderOpen,
     myIconLogo,
     myIconLogout,

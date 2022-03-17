@@ -24,6 +24,9 @@ export enum RoutePaths {
 
 export const standaloneRoutes: Routes = [
     {
+        path: "", pathMatch: "full", redirectTo: RoutePaths.USER_DASHBOARD
+    },
+    {
         path: RoutePaths.AUTHENTICATION,
         component: AuthComponent,
         children: [
