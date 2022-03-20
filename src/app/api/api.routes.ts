@@ -11,6 +11,7 @@ export const apiRoutes: RestApiRoutes = {
         profile: "auth/profile",
         refresh: "auth/refresh",
         logout: "auth/logout",
+        restorePassword: "auth/restore-password",
         getUserById: "user-management-core-service/user-management/user/{id}", // example for url
         hello: "hello"
     }

@@ -1,9 +1,14 @@
 import { Inject, Injectable } from "@angular/core";
 import { RestApiRequestOptions } from "../models/rest-api.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, switchMap } from "rxjs";
+import { map, Observable, switchMap } from "rxjs";
 import { LoginParameters, RegistrationParameters } from "../models/login.model";
-import { AuthorizationResponse, ProfileResponse, RegistrationResponse } from "../models/response.model";
+import {
+    AuthorizationResponse,
+    ProfileResponse,
+    RegistrationResponse,
+    RestorePasswordResponse
+} from "../models/response.model";
 import { apiRoutes } from "../api/api.routes";
 import { RestApiService } from "./rest-api.service";
 import { LOCAL_STORAGE } from "../common/tokens/browser.tokens";
@@ -47,5 +52,12 @@ export class AuthService {
     public registration(registrationParameters: RegistrationParameters): Observable<RegistrationResponse> {
         const url = `${apiRoutes.gateways.publicGateWay}/${apiRoutes.urls["registration"]}`;
         return this.http.post<RegistrationResponse>(url, registrationParameters);
+    }
+
+    public restorePassword(email: string): Observable<boolean> {
+        return this.restApiService.post<RestorePasswordResponse>("restorePassword", { email })
+            .pipe(
+                map((response: RestorePasswordResponse) => response.sentEmail)
+            );
     }
 }

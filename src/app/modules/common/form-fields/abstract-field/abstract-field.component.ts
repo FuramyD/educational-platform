@@ -1,10 +1,12 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
     selector: "ep-abstract-field",
     template: ""
 })
 export class AbstractFieldComponent {
+
+    @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
     @Input() controlName: string;
 
@@ -24,6 +26,7 @@ export class AbstractFieldComponent {
     public _onChange(event: Event): void {
         const { value } = event.target as HTMLInputElement;
         this._dirty = !!value;
+        this.valueChange.emit(value);
     }
 
 }

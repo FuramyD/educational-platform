@@ -6,6 +6,7 @@ import { LoginComponent } from "../modules/login/components/login/login.componen
 import { RegistrationComponent } from "../modules/login/components/registration/registration.component";
 import { RouterPageComponent } from "../views/router-page/router-page.component";
 import { AuthGuard } from "./auth.guard";
+import { ForgotPasswordComponent } from "../modules/login/components/forgot-password/forgot-password.component";
 
 
 export enum RoutePaths {
@@ -32,6 +33,7 @@ export const standaloneRoutes: Routes = [
         children: [
             { path: RoutePaths.LOGIN, component: LoginComponent },
             { path: RoutePaths.REGISTRATION, component: RegistrationComponent },
+            { path: RoutePaths.FORGOT_PASSWORD, component: ForgotPasswordComponent }
         ]
     },
     {

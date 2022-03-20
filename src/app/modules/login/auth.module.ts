@@ -7,13 +7,15 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { EpCommonModule } from "../common/common.module";
 import { LoginComponent } from "./components/login/login.component";
 import { AppRoutingModule } from "../../app-routing.module";
+import { ForgotPasswordComponent } from "./components/forgot-password/forgot-password.component";
 
 
 @NgModule({
     declarations: [
         AuthComponent,
         RegistrationComponent,
-        LoginComponent
+        LoginComponent,
+        ForgotPasswordComponent
     ],
     exports: [
         AuthComponent
