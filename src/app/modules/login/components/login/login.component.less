@@ -1,0 +1,73 @@
+@import "../../../../../assets/styles/colors.less";
+@import "../../../../../assets/styles/variables.less";
+@import "../../../../../assets/styles/fonts.less";
+
+.ep-login-page {
+    &-title {
+        .font-extra-bold-size-height(35px, 28px);
+        margin-bottom: @size-m;
+    }
+    &-help {
+        .font-medium-size-height(14px, 28px);
+        margin-bottom: @size-lx;
+    }
+
+    &__form {
+        &-options {
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: @size-lx;
+
+            label[for="remember-me"] {
+                #remember-me {
+                    width: 20px;
+                    height: 20px;
+
+                    margin-right: @size-sx;
+                    border: 1px solid @gray;
+                    border-radius: 4px;
+
+                    vertical-align: middle;
+                }
+            }
+
+            label[for="remember-me"], .forgot-password {
+                cursor: pointer;
+                .font-medium-size-height(14px, 28px);
+                color: @form-control-label-color;
+            }
+        }
+
+        &-submit {
+            width: 100%;
+            height: @form-control-height;
+
+            text-align: center;
+            color: white;
+            .font-bold-size-height(18px, @form-control-height);
+
+            background: @green;
+            outline: none;
+            border: none;
+            border-radius: @size-xs;
+
+            cursor: pointer;
+        }
+    }
+}
+
+.to-registration {
+    margin-top: @size-xl;
+    color: @light-black;
+    .font-medium-size-height(14px, 28px);
+
+    span {
+        cursor: pointer;
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

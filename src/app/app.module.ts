@@ -10,6 +10,11 @@ import { EpStoreModule, reducers } from "./store/store.module";
 import { EffectsModule } from "@ngrx/effects";
 import { ViewsModule } from "./views/views.module";
 import { EpCommonModule } from "./modules/common/common.module";
+import { SvgIconsModule } from "@ngneat/svg-icon";
+import { completeIconSet } from "./common/icons/icons";
+import { iconSizes } from "./common/icons/sizes";
+import { AuthModule } from "./modules/login/auth.module";
+import { AuthGuard } from "./api/auth.guard";
 
 @NgModule({
     declarations: [
@@ -23,10 +28,16 @@ import { EpCommonModule } from "./modules/common/common.module";
         EffectsModule.forRoot([]),
         StoreModule.forRoot(reducers, {}),
         ViewsModule,
-        EpCommonModule
+        EpCommonModule,
+        AuthModule,
+        SvgIconsModule.forRoot({
+            icons: completeIconSet,
+            sizes: iconSizes
+        })
     ],
     providers: [
         ...PROVIDED_SERVICES,
+        AuthGuard,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: EpHttpInterceptor,

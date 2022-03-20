@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { UserDashboardComponent } from "./components/user-dashboard/user-dashboard.component";
+import { SvgIconsModule } from "@ngneat/svg-icon";
 
 
 
@@ -12,7 +13,8 @@ import { UserDashboardComponent } from "./components/user-dashboard/user-dashboa
         UserDashboardComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        SvgIconsModule
     ]
 })
 export class UserDashboardModule { }

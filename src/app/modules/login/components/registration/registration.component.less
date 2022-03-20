@@ -1,0 +1,48 @@
+@import "../../../../../assets/styles/colors.less";
+@import "../../../../../assets/styles/variables.less";
+@import "../../../../../assets/styles/fonts.less";
+
+.ep-registration-page {
+    &-title {
+        .font-extra-bold-size-height(35px, 28px);
+        margin-bottom: @size-m;
+    }
+    &-help {
+        .font-medium-size-height(14px, 28px);
+        margin-bottom: @size-lx;
+    }
+
+    &__form {
+
+        &-submit {
+            width: 100%;
+            height: @form-control-height;
+
+            text-align: center;
+            color: white;
+            .font-bold-size-height(18px, @form-control-height);
+
+            background: @green;
+            outline: none;
+            border: none;
+            border-radius: @size-xs;
+
+            cursor: pointer;
+        }
+    }
+}
+
+.to-login {
+    margin-top: @size-xl;
+    color: @light-black;
+    .font-medium-size-height(14px, 28px);
+
+    span {
+        cursor: pointer;
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

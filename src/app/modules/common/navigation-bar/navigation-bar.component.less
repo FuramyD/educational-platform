@@ -1,0 +1,51 @@
+@import "../../../../../src/assets/styles/colors";
+@import "../../../../../src/assets/styles/variables";
+
+@item-size: 40px;
+@navigation-list-width: @item-size * 2;
+
+.ep-navigation {
+    margin-top: @size-xl;
+
+    &__logo {
+        padding: 0 @size-l;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        width: @navigation-list-width;
+
+        &-item {
+            width: @item-size;
+            height: @item-size;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: @size-s;
+
+            cursor: pointer;
+            transition: all .3s;
+
+            &-wrapper {
+                margin: (@size-m * 2) 0;
+                padding: 0 @size-m;
+
+                display: flex;
+                justify-content: center;
+
+                &._active {
+                    border-left: 3px solid @main-blue;
+                    border-radius: 3px;
+
+                    .ep-navigation__list-item {
+                        background-color: @light-blue;
+                        color: @main-blue;
+                    }
+                }
+            }
+        }
+    }
+}

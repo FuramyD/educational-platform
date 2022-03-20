@@ -1,0 +1,102 @@
+@import "../../../../../assets/styles/colors.less";
+@import "../../../../../assets/styles/variables.less";
+@import "../../../../../assets/styles/fonts.less";
+
+@logo-width: 56px;
+@logo-height: 67px;
+
+@auth-max-width: 40%;
+@form-max-width: 360px;
+
+.ep-auth-page {
+    display: flex;
+
+    &__wrapper {
+        height: 100vh;
+        width: 100%;
+        max-width: @auth-max-width;
+    }
+
+    &__header {
+        height: @auth-header-height;
+        border-bottom: 1px solid @gray;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-title {
+            display: flex;
+            align-items: center;
+
+            width: 100%;
+            max-width: @form-max-width;
+
+            .logo {
+                width: @logo-width;
+                height: @logo-height;
+
+                margin-right: @size-xs;
+            }
+            span {
+                vertical-align: middle;
+                .font-bold-size-height(35px, 18px);
+            }
+
+            ._black {
+                color: @black;
+            }
+
+            ._green {
+                color: @green;
+            }
+        }
+    }
+
+    &__main {
+        height: @auth-main-height;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: @size-l @size-lx;
+        overflow: auto;
+
+        &-wrapper {
+            margin: auto;
+            width: 100%;
+            max-width: @form-max-width;
+        }
+    }
+
+    &__vector {
+        height: 100vh;
+        width: 100%;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+
+        background: rgba(@green, .2);
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    @auth-max-width: 100%;
+
+    .ep-auth-page {
+        &__vector {
+            display: none;
+        }
+
+        &__wrapper {
+            max-width: @auth-max-width;
+        }
+    }
+}

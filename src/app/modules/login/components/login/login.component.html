@@ -1,0 +1,25 @@
+<h3 class="ep-login-page-title">Вход</h3>
+<p class="ep-login-page-help">Введите данные, чтобы войти в личный кабинет</p>
+<p *ngIf="_message"
+   style="padding: 10px; font-size: 14px; color: green; background: rgba(0, 255, 0, .3); margin: 10px 0;"
+>{{ _message }}</p>
+<p *ngIf="_error"
+   style="padding: 10px; font-size: 14px; color: red; background: rgba(255, 0, 0, .3); margin: 10px 0;"
+>{{ _error }}</p>
+<form class="ep-login-page__form" [formGroup]="_formGroup" (ngSubmit)="_onFormSubmit()">
+    <ep-text-field class="form-control" [controlName]="'login'" [label]="'Ваш телефон или e-mail'"></ep-text-field>
+    <ep-password-field class="form-control" [controlName]="'password'" [label]="'Ваш пароль'"></ep-password-field>
+    <div class="ep-login-page__form-options">
+        <label for="remember-me">
+            <input type="checkbox" formControlName="rememberMe" id="remember-me">
+            Запомнить меня?
+        </label>
+        <span (click)="_navigateToForgotPassword()" class="forgot-password">Забыли пароль?</span>
+    </div>
+    <button type="submit" class="ep-login-page__form-submit">Войти</button>
+</form>
+
+<div class="to-registration">
+    У вас ещё нет аккаунта?
+    <span (click)="_navigateToRegistration()">Зарегистрироваться</span>
+</div>

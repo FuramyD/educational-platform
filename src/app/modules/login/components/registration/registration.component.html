@@ -1,0 +1,17 @@
+<h3 class="ep-registration-page-title">Регистрация</h3>
+<p class="ep-registration-page-help">Введите данные, чтобы войти в личный кабинет</p>
+
+<form class="ep-registration-page__form" [formGroup]="_formGroup" (ngSubmit)="_onFormSubmit()">
+    <ep-text-field class="form-control" [controlName]="'firstName'" [label]="'Имя'"></ep-text-field>
+    <ep-text-field class="form-control" [controlName]="'lastName'" [label]="'Фамилия'"></ep-text-field>
+    <ep-text-field class="form-control" [controlName]="'email'" [label]="'E-mail'"></ep-text-field>
+    <ep-text-field class="form-control" [controlName]="'phone'" [label]="'Телефон'"></ep-text-field>
+    <ep-password-field class="form-control" [controlName]="'password'" [label]="'Ваш пароль'"></ep-password-field>
+    <button type="submit" class="ep-registration-page__form-submit">Зарегистрироваться</button>
+</form>
+
+<div class="to-login">
+    У вас уже есть аккаунт?
+    <span (click)="_navigateToLogin()">Войти</span>
+</div>
+

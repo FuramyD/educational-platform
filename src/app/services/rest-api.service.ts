@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { catchError, EMPTY, Observable, throwError } from "rxjs";
+import { catchError, Observable, throwError } from "rxjs";
 import { RestApiData, RestApiMethod, RestApiOptions } from "../models/rest-api.model";
 import { apiRoutes } from "../api/api.routes";
 
@@ -45,7 +45,7 @@ export class RestApiService {
         }
 
         return request.pipe(
-            catchError(error => (RestApiService.handleError(error), EMPTY))
+            catchError(error => RestApiService.handleError(error))
         ) as Observable<T>;
     };
 
