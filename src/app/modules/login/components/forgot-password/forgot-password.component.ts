@@ -21,7 +21,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this._formGroup = new FormGroup({
-            email: new FormControl(null, [Validators.required])
+            email: new FormControl(null, [Validators.required, Validators.pattern(/^\S+@\S+\.\S{2,}$/)])
         });
     }
 
