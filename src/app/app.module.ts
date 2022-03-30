@@ -15,10 +15,12 @@ import { completeIconSet } from "./common/icons/icons";
 import { iconSizes } from "./common/icons/sizes";
 import { AuthModule } from "./modules/login/auth.module";
 import { AuthGuard } from "./api/auth.guard";
+import { ProfileSidebarComponent } from "./common/profile-sidebar/profile-sidebar.component";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        ProfileSidebarComponent
     ],
     imports: [
         BrowserModule,

@@ -1,11 +1,29 @@
 @import "../../../assets/styles/variables";
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/mixins";
 
 .ep-router-page {
-    margin: 0 auto;
-    max-width: 1440px;
+    &__header {
+        width: 100%;
+        border-bottom: 1px solid @gray;
+    }
 
-    display: flex;
-    .ep-navigation {
-        margin-right: @size-xl;
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        .max-width-centered();
+
+        &-routing {
+            display: flex;
+            margin-top: @size-l;
+
+            .ep-navigation {
+                margin-right: @size-xl;
+            }
+        }
+
+        &-sidebar {
+
+        }
     }
 }

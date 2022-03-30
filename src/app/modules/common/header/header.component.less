@@ -1,0 +1,92 @@
+@import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+
+@header-height: 72px;
+
+@logo-width: 36px;
+@logo-height: 43px;
+
+.ep-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: @header-height;
+    padding: 0 @size-l;
+
+    .max-width-centered();
+
+    &__logo {
+        display: flex;
+
+        .logo {
+            width: @logo-width;
+            height: @logo-height;
+
+            margin-right: @size-xl;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+
+            span {
+                vertical-align: middle;
+                .font-bold-size-height(35px, 18px);
+            }
+
+            ._black {
+                color: @black;
+            }
+
+            ._green {
+                color: @green;
+            }
+        }
+
+    }
+    &__profile {
+        display: flex;
+
+        &-actions {
+            display: flex;
+            align-items: center;
+
+            & > * {
+                cursor: pointer;
+            }
+        }
+
+        &-info {
+            display: flex;
+            align-items: center;
+
+            &-name {
+                margin-right: 75px;
+                margin-left: 65px;
+                .font-regular-size-height(20px, 32px);
+            }
+
+            &-avatar {
+                width: 40px;
+                height: 40px;
+
+                border-radius: 50%;
+                overflow: hidden;
+
+                background: rgba(@green, .4);
+                cursor: pointer;
+
+                .avatar-box {
+                    width: 100%;
+                    height: 100%;
+
+                    background: url(../../../../assets/svg/avatar.svg);
+                    mix-blend-mode: color-burn;
+                }
+            }
+        }
+    }
+}

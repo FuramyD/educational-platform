@@ -3,12 +3,13 @@
            [class._focused]="_focused || _dirty"
            [for]="controlName"
     >{{ label }}</label>
-    <input
+    <input #input
         type="text"
         class="ep-text-field__input"
         [id]="controlName"
         [class._focused]="_focused || _dirty"
         [formControlName]="controlName"
+        [value]="value"
         (focus)="_onFocus()"
         (blur)="_onBlur()"
         (input)="_onChange($event)"

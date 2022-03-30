@@ -1,19 +1,33 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
 
 @Component({
     selector: "ep-abstract-field",
     template: ""
 })
-export class AbstractFieldComponent {
+export class AbstractFieldComponent implements AfterViewInit {
 
-    @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
+    @Output()
+    public valueChange: EventEmitter<string> = new EventEmitter<string>();
 
-    @Input() controlName: string;
+    @Input()
+    public controlName: string;
 
-    @Input() label: string;
+    @Input()
+    public label: string;
+
+    @ViewChild("input")
+    private input: { nativeElement: HTMLInputElement };
 
     public _focused: boolean;
-    public _dirty: boolean;
+    public _dirty: boolean = false;
+    public value: string;
+
+    constructor(private cdr: ChangeDetectorRef) {}
+
+    ngAfterViewInit(): void {
+        this._dirty = !!this.input.nativeElement.value;
+        this.cdr.detectChanges();
+    }
 
     public _onFocus(): void {
         this._focused = true;
@@ -28,5 +42,4 @@ export class AbstractFieldComponent {
         this._dirty = !!value;
         this.valueChange.emit(value);
     }
-
 }

@@ -1,13 +1,12 @@
 import { Inject, Injectable } from "@angular/core";
 import { RestApiRequestOptions } from "../models/rest-api.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { map, Observable, switchMap } from "rxjs";
+import { Observable, switchMap } from "rxjs";
 import { LoginParameters, RegistrationParameters } from "../models/login.model";
 import {
     AuthorizationResponse,
     ProfileResponse,
-    RegistrationResponse,
-    RestorePasswordResponse
+    RegistrationResponse
 } from "../models/response.model";
 import { apiRoutes } from "../api/api.routes";
 import { RestApiService } from "./rest-api.service";
@@ -24,8 +23,6 @@ export class AuthService {
         private http: HttpClient,
         private restApiService: RestApiService
     ) {}
-
-    public static isLoggedIn: boolean = false;
 
     public getAuthorizationOptions(): RestApiRequestOptions {
         const token = this.localStorageRef.getItem(ACCESS_TOKEN);
@@ -55,9 +52,10 @@ export class AuthService {
     }
 
     public restorePassword(email: string): Observable<boolean> {
-        return this.restApiService.post<RestorePasswordResponse>("restorePassword", { email })
-            .pipe(
-                map((response: RestorePasswordResponse) => response.sentEmail)
-            );
+        return this.restApiService.post<boolean>("restorePassword", { email });
+    }
+
+    public changePassword(id: string, password: string): Observable<boolean> {
+        return this.restApiService.post<boolean>("changePassword", { id, password });
     }
 }

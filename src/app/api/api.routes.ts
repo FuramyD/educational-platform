@@ -12,7 +12,8 @@ export const apiRoutes: RestApiRoutes = {
         refresh: "auth/refresh",
         logout: "auth/logout",
         restorePassword: "auth/restore-password",
-        getUserById: "user-management-core-service/user-management/user/{id}", // example for url
+        changePassword: "auth/change-password",
+        getUserById: "users/{id}", // example for url
         hello: "hello"
     }
 };

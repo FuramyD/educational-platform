@@ -8,6 +8,7 @@ import { EpCommonModule } from "../common/common.module";
 import { LoginComponent } from "./components/login/login.component";
 import { AppRoutingModule } from "../../app-routing.module";
 import { ForgotPasswordComponent } from "./components/forgot-password/forgot-password.component";
+import { ChangePasswordComponent } from "./components/change-password/change-password.component";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ForgotPasswordComponent } from "./components/forgot-password/forgot-pas
         AuthComponent,
         RegistrationComponent,
         LoginComponent,
-        ForgotPasswordComponent
+        ForgotPasswordComponent,
+        ChangePasswordComponent
     ],
     exports: [
         AuthComponent

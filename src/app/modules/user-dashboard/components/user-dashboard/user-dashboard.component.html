@@ -1,20 +1,19 @@
-
 <div class="ep-user-dashboard">
-    <div class="ep-user-dashboard__header">
-        <div class="ep-user-dashboard__header-greetings">
-            <svg-icon class="menu-icon" key="menu"></svg-icon>
-            <span>{{ 'Good morning, Alexander' }}</span>
-            <span class="text-notification">
-                {{ 'You have' }}
-                <span class="link">{{ '1 new message' }}</span>
-            </span>
-        </div>
-        <div class="ep-user-dashboard__header-user-info">
-
+    <div class="ep-user-dashboard__title">
+        {{ _title }}
+    </div>
+    <div *ngIf="_sections" class="ep-user-dashboard__sections">
+        <div *ngFor="let section of _sections"
+             [style.color]="section.color"
+             [style.background]="_getBackgroundForSections(section.color)"
+             class="ep-user-dashboard__section"
+        >
+            <svg-icon class="ep-user-dashboard__section-icon" key="folder_open"></svg-icon>
+            <div class="ep-user-dashboard__section-title">{{ section.name }}</div>
+            <svg-icon key="chevron_right" color="#000000"></svg-icon>
         </div>
     </div>
-    <div class="ep-user-dashboard__content">
-        <div class="ep-user-dashboard__content-main"></div>
-        <div class="ep-user-dashboard__content-sidebar"></div>
+    <div class="ep-user-dashboard__statistic">
+
     </div>
 </div>

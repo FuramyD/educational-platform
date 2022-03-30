@@ -5,8 +5,6 @@
 @navigation-list-width: @item-size * 2;
 
 .ep-navigation {
-    margin-top: @size-xl;
-
     &__logo {
         padding: 0 @size-l;
     }
@@ -30,19 +28,22 @@
             transition: all .3s;
 
             &-wrapper {
-                margin: (@size-m * 2) 0;
                 padding: 0 @size-m;
 
                 display: flex;
                 justify-content: center;
 
+                &:not(:first-child) {
+                    margin: (@size-m * 2) 0;
+                }
+
                 &._active {
-                    border-left: 3px solid @main-blue;
+                    border-left: 3px solid @green;
                     border-radius: 3px;
 
                     .ep-navigation__list-item {
-                        background-color: @light-blue;
-                        color: @main-blue;
+                        background-color: @light-green;
+                        color: @green;
                     }
                 }
             }

@@ -7,18 +7,21 @@ import { TextFieldComponent } from "./form-fields/text-field/text-field.componen
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PasswordFieldComponent } from "./form-fields/password-field/password-field.component";
 import { AbstractFieldComponent } from "./form-fields/abstract-field/abstract-field.component";
+import { HeaderComponent } from "./header/header.component";
 
 @NgModule({
     declarations: [
         NavigationBarComponent,
         TextFieldComponent,
         PasswordFieldComponent,
-        AbstractFieldComponent
+        AbstractFieldComponent,
+        HeaderComponent
     ],
     exports: [
         NavigationBarComponent,
         TextFieldComponent,
-        PasswordFieldComponent
+        PasswordFieldComponent,
+        HeaderComponent
     ],
     imports: [
         CommonModule,

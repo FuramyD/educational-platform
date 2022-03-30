@@ -1,7 +1,9 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, FormGroupDirective, Validators } from "@angular/forms";
 import { AuthService } from "../../../../services/auth.service";
-import { ReplaySubject, takeUntil } from "rxjs";
+import { takeUntil } from "rxjs";
+import { EMAIL_REGEXP } from "../../../../common/constants/validator.constants";
+import { EpUnsubscribe } from "../../../../common/helpers/unsubscribe";
 
 @Component({
     selector: "ep-forgot-password",
@@ -9,25 +11,20 @@ import { ReplaySubject, takeUntil } from "rxjs";
     styleUrls: ["./forgot-password.component.less"],
     providers: [FormGroupDirective]
 })
-export class ForgotPasswordComponent implements OnInit, OnDestroy {
+export class ForgotPasswordComponent extends EpUnsubscribe implements OnInit {
 
     public _formGroup: FormGroup;
 
     public _isSentEmail: boolean = false;
 
-    private destroy$: ReplaySubject<void> = new ReplaySubject<void>();
-
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService) {
+        super();
+    }
 
     ngOnInit(): void {
         this._formGroup = new FormGroup({
-            email: new FormControl(null, [Validators.required, Validators.pattern(/^\S+@\S+\.\S{2,}$/)])
+            email: new FormControl(null, [Validators.required, Validators.pattern(EMAIL_REGEXP)])
         });
-    }
-
-    ngOnDestroy(): void {
-        this.destroy$.next();
-        this.destroy$.complete();
     }
 
     _onRestorePassword(): void {
