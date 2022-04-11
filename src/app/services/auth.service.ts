@@ -8,7 +8,6 @@ import {
     ProfileResponse,
     RegistrationResponse
 } from "../models/response.model";
-import { apiRoutes } from "../api/api.routes";
 import { RestApiService } from "./rest-api.service";
 import { LOCAL_STORAGE } from "../common/tokens/browser.tokens";
 import { ACCESS_TOKEN } from "../common/constants/api.constants";
@@ -37,8 +36,15 @@ export class AuthService {
     }
 
     public login(loginParameters: LoginParameters): Observable<ProfileResponse> {
-        const url = `${apiRoutes.gateways.publicGateWay}/${apiRoutes.urls["login"]}`;
-        return this.http.post<AuthorizationResponse>(url, loginParameters).pipe(
+        // const url = `${apiRoutes.gateways.publicGateWay}/${apiRoutes.urls["login"]}`;
+        // return this.http.post<AuthorizationResponse>(url, loginParameters).pipe(
+        //     switchMap((response: AuthorizationResponse) => {
+        //         this.localStorageRef.setItem(ACCESS_TOKEN, response.accessToken);
+        //         return this.getCurrentProfile();
+        //     })
+        // );
+
+        return this.restApiService.post<AuthorizationResponse>("login", loginParameters).pipe(
             switchMap((response: AuthorizationResponse) => {
                 this.localStorageRef.setItem(ACCESS_TOKEN, response.accessToken);
                 return this.getCurrentProfile();
@@ -47,8 +53,9 @@ export class AuthService {
     }
 
     public registration(registrationParameters: RegistrationParameters): Observable<RegistrationResponse> {
-        const url = `${apiRoutes.gateways.publicGateWay}/${apiRoutes.urls["registration"]}`;
-        return this.http.post<RegistrationResponse>(url, registrationParameters);
+        // const url = `${apiRoutes.gateways.publicGateWay}/${apiRoutes.urls["registration"]}`;
+        // return this.http.post<RegistrationResponse>(url, registrationParameters);
+        return this.restApiService.post<RegistrationResponse>("registration", registrationParameters);
     }
 
     public restorePassword(email: string): Observable<boolean> {

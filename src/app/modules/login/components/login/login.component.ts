@@ -7,7 +7,7 @@ import { catchError, EMPTY, takeUntil } from "rxjs";
 import { ProfileResponse } from "../../../../models/response.model";
 import { LOCAL_STORAGE, LOCATION } from "../../../../common/tokens/browser.tokens";
 import { HttpErrorResponse } from "@angular/common/http";
-import { EpUnsubscribe } from "../../../../common/helpers/unsubscribe";
+import { RxUnsubscribe } from "../../../../common/helpers/unsubscribe";
 import { CREDENTIALS } from "../../../../common/constants/api.constants";
 import { LoginParameters } from "../../../../models/login.model";
 
@@ -16,7 +16,7 @@ import { LoginParameters } from "../../../../models/login.model";
     templateUrl: "./login.component.html",
     styleUrls: ["./login.component.less"],
 })
-export class LoginComponent extends EpUnsubscribe implements OnInit, OnDestroy {
+export class LoginComponent extends RxUnsubscribe implements OnInit, OnDestroy {
 
     constructor(
         @Inject(LOCATION) private locationRef: Location,
@@ -43,7 +43,6 @@ export class LoginComponent extends EpUnsubscribe implements OnInit, OnDestroy {
     }
 
     _onFormSubmit(): void {
-        // TODO: should be moved to effects
         const rememberMe = this._formGroup.get("rememberMe").value;
         if (rememberMe) {
             this.localStorageRef.setItem(CREDENTIALS, JSON.stringify(this._formGroup.value));
@@ -53,6 +52,7 @@ export class LoginComponent extends EpUnsubscribe implements OnInit, OnDestroy {
         this.authService.login(this._formGroup.value)
             .pipe(
                 catchError(({ error }: HttpErrorResponse) => {
+                    console.log("error:", error);
                     this._error = error.message;
                     return EMPTY;
                 }),

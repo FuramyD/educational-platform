@@ -1,0 +1,40 @@
+@import "../../../../../assets/styles/variables";
+@import "../../../../../assets/styles/colors";
+@import "../../../../../assets/styles/fonts";
+
+.ep-chat-item {
+    display: flex;
+    align-items: center;
+
+    margin-top: @size-m;
+
+    cursor: pointer;
+
+    &__avatar {
+        margin-left: @size-l;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        margin-left: @size-l;
+        .font-regular-size-height(17px, 28px);
+
+        &-wrapper {
+            display: flex;
+        }
+
+        & > * {
+            margin-bottom: @size-xs;
+        }
+
+        &-username {
+            font-weight: 600;
+        }
+        &-last-message {
+            ._bold {
+                font-weight: 600;
+            }
+        }
+    }
+}

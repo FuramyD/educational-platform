@@ -1,0 +1,32 @@
+<div class="ep-chat" *ngIf="{
+    initialMessages: initialMessages$ | async,
+    messages: messages$ | async
+} as chatData">
+    <div class="ep-chat__header">
+        Chat Works!
+        <p (click)="closeChat.emit()" style="cursor: pointer">&times;</p>
+    </div>
+    <div class="ep-chat__content">
+        <ng-container *ngFor="let dayContent of chatData.initialMessages?.entries()">
+            <ng-container *ngTemplateOutlet="dayTemplate; context: {
+                date: dayContent[0],
+                messages: dayContent[1]
+            }"></ng-container>
+        </ng-container>
+
+    </div>
+</div>
+
+<ng-template #dayTemplate let-date="date" let-messages="messages">
+    <div class="ep-chat__content-date">{{ date | date: "dd MMMM yyyy" }}</div>
+    <ng-container *ngFor="let message of messages">
+        <ng-container *ngTemplateOutlet="messageTemplate; context: {
+            content: message.content.text,
+            type: message.type
+        }"></ng-container>
+    </ng-container>
+</ng-template>
+
+<ng-template #messageTemplate let-content="content" let-type="type">
+    <div class="ep-chat__content-message _{{type}}">{{ content }}</div>
+</ng-template>

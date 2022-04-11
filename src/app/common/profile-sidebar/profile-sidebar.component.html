@@ -1,1 +1,31 @@
-<p>profile-sidebar works!</p>
+<div class="ep-profile-sidebar">
+    <div class="ep-profile-sidebar__title">{{ "Профиль" }}</div>
+    <div class="ep-profile-sidebar__profile">
+        <div class="ep-profile-sidebar__profile-avatar">
+            <div class="avatar-box">
+                <img src="/assets/svg/avatar.svg" alt="avatar">
+            </div>
+        </div>
+        <div class="ep-profile-sidebar__profile-contacts">
+            <div class="name">{{ username }}</div>
+            <div class="email">{{ email }}</div>
+        </div>
+    </div>
+    <div class="ep-profile-sidebar__courses">
+        <div *ngFor="let course of courses" class="ep-profile-sidebar__course">
+            <div class="ep-profile-sidebar__course-icon"
+                 [style.background-color]="course.color"
+            >
+                <svg-icon class="icon" [key]="course.icon"></svg-icon>
+            </div>
+            <div class="ep-profile-sidebar__course-info">
+                <div class="ep-profile-sidebar__course-percentage">{{ course.completed }}</div>
+                <div class="ep-profile-sidebar__course-title">{{ course.title }}</div>
+                <div class="ep-profile-sidebar__course-description">{{ course.description }}</div>
+            </div>
+            <div class="ep-profile-sidebar__course-actions">
+                <svg-icon key="more_vertical"></svg-icon>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from "@angular/core";
 import { ReplaySubject } from "rxjs";
 
 @Injectable()
-export class EpUnsubscribe implements OnDestroy {
+export class RxUnsubscribe implements OnDestroy {
     protected destroy$: ReplaySubject<void> = new ReplaySubject<void>(1);
 
     ngOnDestroy(): void {

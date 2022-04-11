@@ -1,0 +1,41 @@
+<ng-container *ngIf="{
+    chats: chats$ | async,
+    user: user$ | async,
+    openedChat: openedChat$ | async
+} as data">
+    <ng-template *ngIf="data.openedChat then chatContainer else chatListContainer"></ng-template>
+
+    <ng-template #chatContainer>
+        <ng-container *ngTemplateOutlet="chat; context: {
+            chat: data.openedChat,
+            currentUser: data.user
+        }"></ng-container>
+    </ng-template>
+
+    <ng-template #chatListContainer>
+        <ng-container *ngTemplateOutlet="chatList; context: {
+            chats: data.chats,
+            currentId: data.user?.id
+        }"></ng-container>
+    </ng-template>
+
+</ng-container>
+
+<ng-template #chatList let-currentId="currentId" let-chats="chats">
+    <div class="ep-chats-list">
+        <ep-chat-item
+            *ngFor="let chat of chats"
+            [chat]="chat"
+            [currentId]="currentId"
+            (openChat)="_openChat($event)"
+        ></ep-chat-item>
+    </div>
+</ng-template>
+
+<ng-template #chat let-chat="chat" let-currentUser="currentUser">
+    <ep-chat
+        [currentUser]="currentUser"
+        [chat]="chat"
+        (closeChat)="_closeChat()"
+    ></ep-chat>
+</ng-template>

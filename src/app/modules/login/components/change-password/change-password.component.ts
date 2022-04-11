@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../../../services/auth.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { filter, takeUntil } from "rxjs";
-import { EpUnsubscribe } from "../../../../common/helpers/unsubscribe";
+import { RxUnsubscribe } from "../../../../common/helpers/unsubscribe";
 import { RoutePaths } from "../../../../api/standalone.routes";
 
 @Component({
@@ -11,7 +11,7 @@ import { RoutePaths } from "../../../../api/standalone.routes";
     templateUrl: "./change-password.component.html",
     styleUrls: ["./change-password.component.less"]
 })
-export class ChangePasswordComponent extends EpUnsubscribe implements OnInit {
+export class ChangePasswordComponent extends RxUnsubscribe implements OnInit {
 
     public _formGroup: FormGroup;
     public _error: string = "";

@@ -2,7 +2,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { User } from "../../models/user.model";
 
 export interface UsersState extends EntityState<User> {
-    currentUserId: string;
+    currentUser: User;
 }
 
 export const usersAdapter: EntityAdapter<User> = createEntityAdapter<User>({
@@ -11,5 +11,5 @@ export const usersAdapter: EntityAdapter<User> = createEntityAdapter<User>({
 });
 
 export const initialState: UsersState = usersAdapter.getInitialState({
-    currentUserId: null
+    currentUser: null
 });

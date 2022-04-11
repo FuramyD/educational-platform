@@ -15,12 +15,19 @@ import { completeIconSet } from "./common/icons/icons";
 import { iconSizes } from "./common/icons/sizes";
 import { AuthModule } from "./modules/login/auth.module";
 import { AuthGuard } from "./api/auth.guard";
-import { ProfileSidebarComponent } from "./common/profile-sidebar/profile-sidebar.component";
+import { SocketIoConfig, SocketIoModule } from "ngx-socket-io";
+import { socketGateWay } from "./api/api.routes";
+
+const config: SocketIoConfig = {
+    url: socketGateWay,
+    options: {
+        transports: ["websocket"]
+    }
+};
 
 @NgModule({
     declarations: [
-        AppComponent,
-        ProfileSidebarComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -35,7 +42,8 @@ import { ProfileSidebarComponent } from "./common/profile-sidebar/profile-sideba
         SvgIconsModule.forRoot({
             icons: completeIconSet,
             sizes: iconSizes
-        })
+        }),
+        SocketIoModule.forRoot(config),
     ],
     providers: [
         ...PROVIDED_SERVICES,

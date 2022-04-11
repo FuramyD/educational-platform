@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { EpUnsubscribe } from "../../../../common/helpers/unsubscribe";
+import { RxUnsubscribe } from "../../../../common/helpers/unsubscribe";
 import { AuthService } from "../../../../services/auth.service";
 import { takeUntil } from "rxjs";
 import { ProfileResponse } from "../../../../models/response.model";
@@ -12,7 +12,7 @@ import { LOCAL_STORAGE } from "../../../../common/tokens/browser.tokens";
     templateUrl: "./auth.component.html",
     styleUrls: ["./auth.component.less"]
 })
-export class AuthComponent extends EpUnsubscribe implements OnInit {
+export class AuthComponent extends RxUnsubscribe implements OnInit {
 
     constructor(
         @Inject(LOCAL_STORAGE) private localStorageRef: Storage,
@@ -30,5 +30,9 @@ export class AuthComponent extends EpUnsubscribe implements OnInit {
                     this.router.navigate([RoutePaths.USER_DASHBOARD]);
                 }
             });
+    }
+
+    _redirectToLogin(): void {
+        this.router.navigate([RoutePaths.AUTHENTICATION, RoutePaths.LOGIN]);
     }
 }

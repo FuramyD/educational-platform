@@ -3,7 +3,7 @@ import { FormControl, FormGroup, FormGroupDirective, Validators } from "@angular
 import { AuthService } from "../../../../services/auth.service";
 import { takeUntil } from "rxjs";
 import { EMAIL_REGEXP } from "../../../../common/constants/validator.constants";
-import { EpUnsubscribe } from "../../../../common/helpers/unsubscribe";
+import { RxUnsubscribe } from "../../../../common/helpers/unsubscribe";
 
 @Component({
     selector: "ep-forgot-password",
@@ -11,7 +11,7 @@ import { EpUnsubscribe } from "../../../../common/helpers/unsubscribe";
     styleUrls: ["./forgot-password.component.less"],
     providers: [FormGroupDirective]
 })
-export class ForgotPasswordComponent extends EpUnsubscribe implements OnInit {
+export class ForgotPasswordComponent extends RxUnsubscribe implements OnInit {
 
     public _formGroup: FormGroup;
 

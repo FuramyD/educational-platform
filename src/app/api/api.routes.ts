@@ -1,9 +1,10 @@
 import { RestApiRoutes } from "../models/rest-api.model";
 import { environment } from "../../environments/environment";
 
+export const socketGateWay = environment.production ? "" : "http://localhost:80";
 export const apiRoutes: RestApiRoutes = {
     gateways: {
-        publicGateWay: environment.production ? "" : "http://localhost:3000"
+        publicGateWay: environment.production ? "" : "http://localhost:3000",
     },
     urls: {
         login: "auth/login",

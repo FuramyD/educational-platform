@@ -14,6 +14,7 @@
         .max-width-centered();
 
         &-routing {
+            width: 100%;
             display: flex;
             margin-top: @size-l;
 
@@ -22,8 +23,10 @@
             }
         }
 
-        &-sidebar {
-
+        @media (max-width: 1400px) {
+            &-sidebar {
+                display: none;
+            }
         }
     }
 }

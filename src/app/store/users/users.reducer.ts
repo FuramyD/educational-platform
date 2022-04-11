@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { initialState, usersAdapter } from "./users.state";
+import { initialState, usersAdapter, UsersState } from "./users.state";
 import * as UserActions from "./users.actions";
 
 export const usersFeatureKey: string = "users";
@@ -16,4 +16,8 @@ export const usersReducer = createReducer(
     on(UserActions.deleteUser, (state, action) => usersAdapter.removeOne(action.payload.id, state)),
     on(UserActions.deleteUsers, (state, action) => usersAdapter.removeMany(action.payload.ids, state)),
     on(UserActions.deleteAllUsers, state => usersAdapter.removeAll(state)),
+    on(UserActions.setCurrentUser, (state, action): UsersState => ({
+        ...state,
+        currentUser: action.payload
+    }))
 );

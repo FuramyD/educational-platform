@@ -1,0 +1,17 @@
+<div class="ep-chat-item">
+    <input type="checkbox">
+    <div class="ep-chat-item__info-wrapper" (click)="_openChat()">
+        <div class="ep-chat-item__avatar">
+            <div class="avatar-box">
+                <img src="assets/svg/avatar.svg" alt="avatar">
+            </div>
+        </div>
+        <div class="ep-chat-item__info">
+            <div class="ep-chat-item__info-username">{{ _getChatTitle() }}</div>
+            <div class="ep-chat-item__info-last-message" *ngIf="_getLastMessage(chat.messages) as lastMessage">
+                <span class="_bold" *ngIf="lastMessage.senderId === currentId">Вы:</span>
+                {{ lastMessage.content.text }}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/fonts";
+
+@avatar-size: 48px;
+@course-icon-size: 48px;
+
+.ep-profile-sidebar {
+    margin-top: @size-l;
+
+    &__title {
+        margin-bottom: @size-l;
+        color: @main;
+        .font-extra-bold-size-height(20px, 28px);
+    }
+    &__profile {
+        padding: @size-m @size-xl;
+        margin-bottom: @size-xl;
+
+        display: flex;
+        align-items: center;
+
+        &-avatar {
+            width: @avatar-size;
+            height: @avatar-size;
+
+            display: flex;
+            flex-basis: @avatar-size;
+
+            .avatar-box {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                border-radius: @size-xs;
+                background: @gray;
+                overflow: hidden;
+
+                img {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+
+        &-contacts {
+            margin-left: 75px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .name {
+                color: @main;
+                .font-medium-size-height(16px, 24px);
+            }
+
+            .email {
+                color: @light;
+                .font-regular-size-height(12px, 16px);
+            }
+        }
+    }
+
+    &__courses {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__course {
+        position: relative;
+        padding: @size-l @size-xl;
+        width: 40%;
+
+        &-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: @course-icon-size;
+            height: @course-icon-size;
+
+            color: white;
+            border-radius: @border-radius;
+            overflow: hidden;
+        }
+
+        &-info {
+            margin-top: @size-m;
+            color: @main;
+
+            & > * {
+                & + * {
+                    margin-top: @size-s;
+                }
+            }
+        }
+
+        &-percentage {
+            .font-medium-size-height(16px, 24px);
+        }
+
+        &-title {
+            .font-medium-size-height(14px, 20px);
+        }
+
+        &-description {
+            color: @light;
+            .font-regular-size-height(12px, 16px);
+        }
+
+        &-actions {
+            position: absolute;
+            top: 24px;
+            right: 14px;
+
+            width: @size-l;
+            height: @size-l;
+
+            cursor: pointer;
+        }
+    }
+}

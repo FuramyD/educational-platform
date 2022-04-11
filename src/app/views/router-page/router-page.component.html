@@ -1,29 +1,23 @@
-<div class="ep-router-page">
-    <div class="ep-router-page__header">
-        <ep-header [username]="_username"></ep-header>
-    </div>
-    <div class="ep-router-page__main">
-        <div class="ep-router-page__main-routing">
-            <ep-navigation-bar class="ep-navigation"></ep-navigation-bar>
-            <router-outlet></router-outlet>
+<ng-container *ngIf="{
+    user: _user$ | async,
+    courses: _courses$ | async
+} as data">
+    <div class="ep-router-page">
+        <div class="ep-router-page__header">
+            <ep-header [username]="_getFullName(data.user)"></ep-header>
         </div>
-        <div class="ep-router-page__main-sidebar">
-            <div class="ep-router-page__main-sidebar__title">{{ "Профиль" }}</div>
-            <div class="ep-router-page__main-sidebar__profile">
-                <div class="ep-router-page__main-sidebar__profile-avatar">
-                    <div class="avatar-box">
-
-                    </div>
-                </div>
-                <div class="ep-router-page__main-sidebar__profile-contacts">
-                    <div class="name">{{ _username }}</div>
-                    <div class="email">{{ _email }}</div>
-                </div>
+        <div class="ep-router-page__main">
+            <div class="ep-router-page__main-routing">
+                <ep-navigation-bar class="ep-navigation"></ep-navigation-bar>
+                <router-outlet></router-outlet>
             </div>
-            <div class="ep-router-page__main-sidebar__courses">
-                <div *ngFor="let course of _courses" class="ep-router-page__main-sidebar__course"></div>
-            </div>
+            <ep-profile-sidebar
+                class="ep-router-page__main-sidebar"
+                [courses]="_prepareCourses(data.courses)"
+                [username]="_getFullName(data.user)"
+                [email]="data.user?.email"
+            ></ep-profile-sidebar>
         </div>
     </div>
-</div>
+</ng-container>
 

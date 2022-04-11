@@ -1,0 +1,36 @@
+@import "../../../../../assets/styles/colors";
+@import "../../../../../assets/styles/fonts";
+@import "../../../../../assets/styles/variables";
+
+@in-message-background: #E7E7E7;
+@out-message-background: rgba(0, 138, 14, 0.5);
+
+.ep-chat {
+    width: 100%;
+    margin: @size-s 100px;
+    &__content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &-date {
+            align-self: center;
+        }
+        &-message {
+            color: @main;
+            padding: @size-common @size-m;
+            border-radius: @border-radius;
+
+            margin: @size-s;
+
+            &._in {
+                align-self: flex-start;
+                background-color: @in-message-background
+            }
+            &._out {
+                align-self: flex-end;
+                background-color: @out-message-background
+            }
+        }
+    }
+}

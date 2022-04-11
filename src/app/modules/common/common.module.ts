@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PasswordFieldComponent } from "./form-fields/password-field/password-field.component";
 import { AbstractFieldComponent } from "./form-fields/abstract-field/abstract-field.component";
 import { HeaderComponent } from "./header/header.component";
+import { ProfileSidebarComponent } from "../../common/profile-sidebar/profile-sidebar.component";
 
 @NgModule({
     declarations: [
@@ -15,13 +16,15 @@ import { HeaderComponent } from "./header/header.component";
         TextFieldComponent,
         PasswordFieldComponent,
         AbstractFieldComponent,
-        HeaderComponent
+        HeaderComponent,
+        ProfileSidebarComponent
     ],
     exports: [
         NavigationBarComponent,
         TextFieldComponent,
         PasswordFieldComponent,
-        HeaderComponent
+        HeaderComponent,
+        ProfileSidebarComponent
     ],
     imports: [
         CommonModule,

@@ -4,20 +4,31 @@ import { EntityMap, Update } from "@ngrx/entity";
 
 export enum UsersActionTypes {
     LoadUsers = "[Users] Load all users",
-    AddUser = "[Users] add user",
-    AddUsers = "[Users] add users",
-    UpsertUser = "[Users] upsert user",
-    UpsertUsers = "[Users] upsert users",
-    UpdateUser = "[Users] update user",
-    UpdateUsers = "[Users] update users",
-    MapUsers = "[Users] map users",
-    DeleteUser = "[Users] delete user",
-    DeleteUsers = "[Users] delete users",
-    DeleteAllUsers = "[Users] delete all users"
+    LoadCurrentUser = "[Users] Load current user",
+    SetCurrentUser = "[Users] Set current user",
+    AddUser = "[Users] Add user",
+    AddUsers = "[Users] Add users",
+    UpsertUser = "[Users] Upsert user",
+    UpsertUsers = "[Users] Upsert users",
+    UpdateUser = "[Users] Update user",
+    UpdateUsers = "[Users] Update users",
+    MapUsers = "[Users] Map users",
+    DeleteUser = "[Users] Delete user",
+    DeleteUsers = "[Users] Delete users",
+    DeleteAllUsers = "[Users] Delete all users"
 }
 
 export const loadAllUsers = createAction(
     UsersActionTypes.LoadUsers
+);
+
+export const loadCurrentUser = createAction(
+    UsersActionTypes.LoadCurrentUser
+);
+
+export const setCurrentUser = createAction(
+    UsersActionTypes.SetCurrentUser,
+    props<{ payload: User }>()
 );
 
 export const addUser = createAction(

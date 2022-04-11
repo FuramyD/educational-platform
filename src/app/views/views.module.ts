@@ -7,6 +7,7 @@ import { AppRoutingModule } from "../app-routing.module";
 import { EpCommonModule } from "../modules/common/common.module";
 import { PlanningPageComponent } from "./planning-page/planning-page.component";
 import { ChatPageComponent } from "./chat-page/chat-page.component";
+import { ChatsModule } from "../modules/chats/chats.module";
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { ChatPageComponent } from "./chat-page/chat-page.component";
         CommonModule,
         UserDashboardModule,
         AppRoutingModule,
-        EpCommonModule
+        EpCommonModule,
+        ChatsModule
     ]
 })
 export class ViewsModule { }
