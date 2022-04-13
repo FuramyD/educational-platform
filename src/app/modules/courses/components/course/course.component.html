@@ -1,0 +1,108 @@
+<div class="ep-course">
+    <div class="ep-course__main">
+        <div class="ep-course__main-title">
+            <svg-icon class="close-icon" key="close" size="xxl" (click)="_closeCourse()"></svg-icon>
+            {{ course.name }}
+        </div>
+        <div class="ep-course__main-content">
+            <ng-container *ngIf="!(_openedLesson || _testIsOpened) else lesson">
+                <ng-container *ngTemplateOutlet="chooseThemeView; context: { course: course }"></ng-container>
+            </ng-container>
+        </div>
+    </div>
+    <div class="ep-course__content">
+        <div class="ep-course__content-title">{{ "Содержание курса" }}</div>
+        <div class="ep-course__content-list">
+            <ng-container *ngFor="let theme of course.themes">
+                <div class="ep-course__content-list__theme-item"
+                     [class._active]="theme === _openedTheme"
+                     (click)="_openTheme(theme)">
+                    <svg-icon class="icon" key="content_theme" size="xxl"></svg-icon>
+                    {{ theme.name }}
+                </div>
+                <ng-container *ngFor="let lesson of theme.lessons">
+                    <div class="ep-course__content-list__lesson-item"
+                         [class._active]="lesson === _openedLesson"
+                         (click)="_openLesson(theme, lesson)"
+                    >
+                        <svg-icon class="icon" key="content_lesson" size="xxl"></svg-icon>
+                        {{ lesson.name }}
+                    </div>
+                </ng-container>
+            </ng-container>
+            <div class="ep-course__content-list__test-item"
+                 [class._active]="_testIsOpened"
+                 (click)="_openTest()"
+            >
+                <svg-icon class="icon" key="content_test" size="xxl"></svg-icon>
+                {{ "Итоговый тест" }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #chooseThemeView let-course="course">
+    <div class="ep-course__main-content__name-with-img">{{ course.name }}</div>
+    <div class="ep-course__main-content__description">{{ course.description }}</div>
+    <div class="ep-course__main-content__themes">
+        <ng-container *ngTemplateOutlet="themesTemplate; context: { themes: course.themes }"></ng-container>
+    </div>
+</ng-template>
+
+<ng-template #themesTemplate let-themes="themes">
+    <ng-container *ngIf="!_openedTheme else openedTheme">
+        <div class="ep-course__main-content__theme" *ngFor="let theme of themes">
+            <div class="ep-course__main-content__theme-name">{{ theme.name }}</div>
+            <div class="ep-course__main-content__theme-toggle-icon" (click)="_toggleTheme(theme)">
+                <svg-icon class="toggle-icon _rotated" key="close"></svg-icon>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #openedTheme>
+    <div class="ep-course__main-content__theme _opened">
+        <div class="ep-course__main-content__theme-name">{{ _openedTheme.name }}</div>
+        <div class="ep-course__main-content__theme-toggle-icon" (click)="_toggleTheme(_openedTheme)">
+            <svg-icon class="toggle-icon" key="close"></svg-icon>
+        </div>
+        <div class="ep-course__main-content__theme-lessons">
+            <ng-container *ngFor="let lesson of _openedTheme.lessons">
+                <ng-container *ngTemplateOutlet="lessonItemTemplate; context: { lesson: lesson }"></ng-container>
+            </ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #lessonItemTemplate let-lesson="lesson">
+    <div class="ep-course__main-content__theme-lesson" (click)="_openLesson(_openedTheme, lesson)">
+        <div class="ep-course__main-content__theme-lesson-name">{{ lesson.name }}</div>
+        <div class="ep-course__main-content__theme-lesson-completed">
+            <svg-icon class="is-completed" [key]="lesson.completed ? 'completed' : 'uncompleted'"></svg-icon>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #lesson>
+    <div class="ep-course__main-content__lesson">
+        <div class="ep-course__main-content__lesson-title">{{ _openedLesson.name }}</div>
+        <div class="ep-course__main-content__lesson-breadcrumbs">
+            <span>
+                <p class="breadcrumb-link" (click)="_closeCourse()">В начало</p> /
+            </span>
+            <span class="" *ngIf="course">
+                <p class="breadcrumb-link" (click)="_toggleTheme(_openedTheme)">{{ course.name }}</p> /
+            </span>
+            <span *ngIf="_openedTheme">
+                <p class="breadcrumb-link" (click)="_openTheme(_openedTheme)">{{ _openedTheme.name }}</p> /
+            </span>
+            <span *ngIf="_openedLesson">
+                <p class="breadcrumb-link _active">{{ _openedLesson.name }}</p>
+            </span>
+
+        </div>
+        <div class="ep-course__main-content__lesson-content" [innerHTML]="_openedLesson.content"></div>
+    </div>
+</ng-template>
+
+

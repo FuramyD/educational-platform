@@ -1,0 +1,258 @@
+@import "../../../../../assets/styles/colors";
+@import "../../../../../assets/styles/variables";
+@import "../../../../../assets/styles/fonts";
+@import "../../../../../assets/styles/mixins";
+
+@k: 0.8;
+@name-with-img-height: 220px * @k;
+@description-height: 110px * @k;
+@theme-height: 110px * @k;
+@content-item-height: 56px;
+@toggle-icon-size: 55px;
+@completed-icon-size: 55px;
+
+
+:host(ep-course) {
+    width: 100%;
+}
+
+.ep-course {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    &__main {
+        width: 80%;
+        margin-right: @size-xl;
+
+        &-title {
+            .font-extra-bold-size-height(32px, 64px);
+            margin-bottom: @size-xl;
+            color: @main;
+
+            .close-icon {
+                transform: scale(0.7) translateY(@size-sx);
+                vertical-align: sub;
+                margin-left: @size-s;
+
+                cursor: pointer;
+            }
+        }
+
+        &-content {
+            &__name-with-img {
+                width: 100%;
+                height: @name-with-img-height;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                margin-bottom: @size-xl;
+                border: 1px solid @gray;
+                border-radius: @border-radius;
+                background-size: cover;
+                background-color: @light-green2;
+                .font-medium-size-height(32px, 28px);
+            }
+
+            &__description {
+                width: 100%;
+                height: @description-height;
+
+                margin-bottom: @size-xl;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .font-medium-size-height(32px, 28px);
+            }
+
+            &__themes {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            &__theme {
+                position: relative;
+
+                width: 100%;
+                //height: @theme-height;
+                max-height: @theme-height;
+
+                margin-bottom: @size-xl;
+                padding: 0 @size-m;
+
+                border: 1px solid @gray;
+                border-radius: @border-radius;
+                background-color: @basic;
+
+                transition: max-height @transition-time;
+
+                overflow: hidden;
+
+                &._opened {
+                    max-height: none;
+                }
+
+                &-name {
+                    text-align: center;
+                    color: @main;
+                    .font-bold-size-height(32px, @theme-height);
+                }
+
+                &-toggle-icon {
+                    position: absolute;
+                    top: @size-l;
+                    right: @size-m;
+                    transition: @transition-time;
+
+                    cursor: pointer;
+
+                    .toggle-icon {
+                        width: @toggle-icon-size;
+                        height: @toggle-icon-size;
+
+                        text-align: center;
+                        vertical-align: middle;
+
+                        &._rotated {
+                            transform: rotate(45deg);
+                        }
+                    }
+                }
+                &-lessons {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                &-lesson {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    padding: 0 @size-m;
+                    margin-bottom: @size-xl;
+
+                    cursor: pointer;
+
+                    &-name {
+                        .font-medium-size-height(32px, 28px);
+                    }
+                    &-completed {
+                        .is-completed {
+                            width: @completed-icon-size;
+                            height: @completed-icon-size;
+
+                            //vertical-align: middle;
+                            //text-align: center;
+                        }
+                    }
+                }
+            }
+
+            &__lesson {
+                &-title {
+                    width: 100%;
+                    height: @theme-height;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    border: 1px solid @gray;
+                    border-radius: @border-radius;
+                    background-color: @light-green2;
+
+                    .font-medium-size-height(20px, 28px);
+                }
+
+                &-breadcrumbs {
+                    display: flex;
+                    margin-top: @size-xl;
+
+                    span {
+                        display: flex;
+                        .font-medium-size-height(20px, 28px);
+                    }
+
+                    .breadcrumb-link {
+                        margin: 0 @size-sm;
+                        color: @main;
+                        cursor: pointer;
+
+                        &._active {
+                            .font-bold-size-height(20px, 28px);
+                        }
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                &-content {
+                    width: 100%;
+                    padding: @size-l @size-xl;
+                    margin-top: @size-xl;
+
+                    border: 1px solid @gray;
+                    border-radius: @border-radius;
+                    background-color: @basic;
+
+                    .font-medium-size-height(20px, 28px);
+                }
+            }
+        }
+    }
+
+    &__content {
+        width: 20%;
+        &-title {
+            .font-extra-bold-size-height(20px, 64px);
+            margin-bottom: @size-xl;
+            color: @main;
+        }
+        &-list {
+            width: 100%;
+            &__theme-item,
+            &__lesson-item,
+            &__test-item {
+                width: 100%;
+                height: @content-item-height;
+
+                padding: @size-s;
+
+                display: flex;
+                align-items: center;
+
+                border: 1px solid @gray;
+                background-color: @basic;
+
+                cursor: pointer;
+
+                &._active {
+                    background-color: darken(@basic, 5%);
+                }
+
+                .icon {
+                    margin-right: @size-s;
+                }
+            }
+
+            &__theme-item, &__test-item {
+                .font-bold-size-height(20px, 28px);
+                text-transform: uppercase;
+            }
+
+            &__lesson-item {
+                .font-medium-size-height(20px, 28px);
+            }
+        }
+    }
+}
+
+
