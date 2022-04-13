@@ -1,11 +1,7 @@
 <h3 class="ep-login-page-title">Вход</h3>
 <p class="ep-login-page-help">Введите данные, чтобы войти в личный кабинет</p>
-<p *ngIf="_message"
-   style="padding: 10px; font-size: 14px; color: green; background: rgba(0, 255, 0, .3); margin: 10px 0;"
->{{ _message }}</p>
-<p *ngIf="_error"
-   style="padding: 10px; font-size: 14px; color: red; background: rgba(255, 0, 0, .3); margin: 10px 0;"
->{{ _error }}</p>
+<p class="_message" *ngIf="_message">{{ _message }}</p>
+<p class="_error" *ngIf="_error">{{ _error }}</p>
 <form class="ep-login-page__form" [formGroup]="_formGroup" (ngSubmit)="_onFormSubmit()">
     <ep-text-field class="form-control" [controlName]="'login'" [label]="'Ваш телефон или e-mail'"></ep-text-field>
     <ep-password-field class="form-control" [controlName]="'password'" [label]="'Ваш пароль'"></ep-password-field>

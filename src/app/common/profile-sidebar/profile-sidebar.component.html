@@ -16,11 +16,11 @@
             <div class="ep-profile-sidebar__course-icon"
                  [style.background-color]="course.color"
             >
-                <svg-icon class="icon" [key]="course.icon"></svg-icon>
+                <svg-icon class="icon" [key]="course.image"></svg-icon>
             </div>
             <div class="ep-profile-sidebar__course-info">
                 <div class="ep-profile-sidebar__course-percentage">{{ course.completed }}</div>
-                <div class="ep-profile-sidebar__course-title">{{ course.title }}</div>
+                <div class="ep-profile-sidebar__course-title">{{ course.name }}</div>
                 <div class="ep-profile-sidebar__course-description">{{ course.description }}</div>
             </div>
             <div class="ep-profile-sidebar__course-actions">

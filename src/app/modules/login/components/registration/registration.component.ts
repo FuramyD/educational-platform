@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "src/app/services/auth.service";
 import { Router } from "@angular/router";
@@ -9,7 +9,8 @@ import { EMAIL_REGEXP } from "../../../../common/constants/validator.constants";
 @Component({
     selector: "ep-registration",
     templateUrl: "./registration.component.html",
-    styleUrls: ["./registration.component.less"]
+    styleUrls: ["./registration.component.less"],
+    encapsulation: ViewEncapsulation.None
 })
 export class RegistrationComponent implements OnInit {
 

@@ -1,0 +1,45 @@
+<ng-container *ngIf="{
+    openedCourse: openedCourse$ | async,
+    courses: courses$ | async
+} as coursesData">
+    <ng-container *ngIf="coursesData.openedCourse then courseViewContainer else coursesListContainer"></ng-container>
+
+    <ng-template #coursesListContainer>
+        <ng-container *ngTemplateOutlet="coursesList; context: { courses: coursesData.courses }"></ng-container>
+    </ng-template>
+
+    <ng-template #courseViewContainer>
+        <ng-container *ngTemplateOutlet="courseView; context: { course: coursesData.openedCourse }"></ng-container>
+    </ng-template>
+
+</ng-container>
+
+<ng-template #coursesList let-courses="courses">
+    <div class="ep-courses-list__title">{{ "Все доступные направления" }}</div>
+    <div class="ep-courses-list__wrapper">
+        <div class="ep-courses-list">
+            <div class="ep-courses-list__card" *ngFor="let course of courses"
+                 (click)="_openCourse(course)"
+            >
+                <div class="ep-courses-list__card-avatar">
+                    <div class="avatar-box">
+                        <img [src]="course.icon" alt="avatar">
+                    </div>
+                </div>
+                <div class="ep-courses-list__card-info">
+                    <p class="ep-courses-list__card-info-direction">{{ course.direction }}</p>
+                    <p class="ep-courses-list__card-info-name">{{ course.name }}</p>
+                    <p class="ep-courses-list__card-info-duration">{{ course.duration | duration : "месяц" : ["", "а", "ов"] }}</p>
+                </div>
+            </div>
+        </div>
+        <ep-courses-filters></ep-courses-filters>
+    </div>
+</ng-template>
+
+<ng-template #courseView let-course="course">
+    <ep-course
+        [course]="course"
+        (closed)="_onCloseCourse()"
+    ></ep-course>
+</ng-template>

@@ -3,7 +3,7 @@
         <div *ngFor="let item of _menuItems"
              class="ep-navigation__list-item-wrapper"
              routerLinkActive="_active"
-             [routerLink]="[item.route]"
+             [routerLink]="item.route"
         >
             <li class="ep-navigation__list-item">
                 <svg-icon
@@ -13,4 +13,20 @@
             </li>
         </div>
     </ul>
+    <div class="ep-navigation-footer">
+        <ul class="ep-navigation__list">
+            <div *ngFor="let item of _footerItems"
+                 class="ep-navigation__list-item-wrapper"
+                 routerLinkActive="_active"
+                 [routerLink]="item.route"
+            >
+                <li class="ep-navigation__list-item">
+                    <svg-icon
+                        [key]="item.icon"
+                        [size]="item.size || _iconDefaultSize"
+                    ></svg-icon>
+                </li>
+            </div>
+        </ul>
+    </div>
 </div>

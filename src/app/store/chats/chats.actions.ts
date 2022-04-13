@@ -3,11 +3,11 @@ import { Chat } from "../../models/chat.model";
 import { UpdateStr } from "@ngrx/entity/src/models";
 
 export enum ChatsActionTypes {
-    LoadChats = "[Chats] Load chats",
-    SetChats = "[Chats] Set chats",
-    RemoveChat = "[Chats] Remove chat",
-    AddChat = "[Chats] Add chat",
-    UpdateChat = "[Chats] Update chat",
+    LoadChats = "[Chats] Load Chats",
+    SetChats = "[Chats] Set Chats",
+    RemoveChat = "[Chats] Remove Chat",
+    AddChat = "[Chats] Add Chat",
+    UpdateChat = "[Chats] Update Chat",
 }
 
 export const loadChats = createAction(

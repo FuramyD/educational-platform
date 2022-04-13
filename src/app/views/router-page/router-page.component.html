@@ -1,6 +1,5 @@
 <ng-container *ngIf="{
-    user: _user$ | async,
-    courses: _courses$ | async
+    user: _user$ | async
 } as data">
     <div class="ep-router-page">
         <div class="ep-router-page__header">
@@ -11,12 +10,6 @@
                 <ep-navigation-bar class="ep-navigation"></ep-navigation-bar>
                 <router-outlet></router-outlet>
             </div>
-            <ep-profile-sidebar
-                class="ep-router-page__main-sidebar"
-                [courses]="_prepareCourses(data.courses)"
-                [username]="_getFullName(data.user)"
-                [email]="data.user?.email"
-            ></ep-profile-sidebar>
         </div>
     </div>
 </ng-container>

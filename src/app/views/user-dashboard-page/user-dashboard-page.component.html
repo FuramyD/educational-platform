@@ -1,1 +1,15 @@
-<ep-user-dashboard></ep-user-dashboard>
+<ng-container *ngIf="{
+    user: user$ | async,
+    courses: courses$ | async,
+    colors: coursesColors$ | async
+} as data">
+    <div class="ep-user-dashboard-page">
+        <ep-user-dashboard></ep-user-dashboard>
+        <ep-profile-sidebar
+            class="ep-user-dashboard-page__sidebar"
+            [courses]="_prepareCourses(data.courses, data.colors)"
+            [username]="_getFullName(data.user)"
+            [email]="data.user?.email"
+        ></ep-profile-sidebar>
+    </div>
+</ng-container>

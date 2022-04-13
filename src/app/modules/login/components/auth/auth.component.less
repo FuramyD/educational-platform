@@ -86,6 +86,23 @@
     }
 }
 
+._error, ._message {
+    padding: @size-s @size-m;
+    margin-bottom: @size-s;
+    border-radius: @size-xs;
+    overflow: hidden;
+}
+
+._error {
+    background-color: fade(red, 20%);
+    color: red;
+}
+
+._message{
+    background-color: fade(lightgreen, 40%);
+    color: fade(green, 90%);
+}
+
 @media screen and (max-width: 1050px) {
     @auth-max-width: 100%;
 

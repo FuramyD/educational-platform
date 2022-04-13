@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../../../services/auth.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -9,7 +9,8 @@ import { RoutePaths } from "../../../../api/standalone.routes";
 @Component({
     selector: "ep-change-password",
     templateUrl: "./change-password.component.html",
-    styleUrls: ["./change-password.component.less"]
+    styleUrls: ["./change-password.component.less"],
+    encapsulation: ViewEncapsulation.None
 })
 export class ChangePasswordComponent extends RxUnsubscribe implements OnInit {
 

@@ -5,8 +5,17 @@
 @navigation-list-width: @item-size * 2;
 
 .ep-navigation {
+    height: calc(100vh - @header-height - @size-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     &__logo {
         padding: 0 @size-l;
+    }
+
+    &-footer {
+        justify-self: flex-end;
     }
 
     &__list {

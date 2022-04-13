@@ -1,0 +1,65 @@
+@import "../../../../../assets/styles/variables";
+@import "../../../../../assets/styles/colors";
+@import "../../../../../assets/styles/fonts";
+@import "../../../../../assets/styles/mixins";
+
+@course-avatar-size: 156px;
+
+.ep-courses-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__title {
+        .font-extra-bold-size-height(20px, 28px);
+        margin-bottom: @size-xl;
+    }
+
+    &__wrapper {
+        display: flex;
+        &:first-child {
+            margin-right: @size-xl;
+        }
+    }
+
+    &__card {
+        width: 45%;
+        min-width: 400px;
+        display: flex;
+
+        padding: 0 @size-xl;
+        margin-bottom: @size-xl;
+        border: 1px solid @gray;
+        border-radius: @border-radius;
+        background-color: @basic;
+
+        cursor: pointer;
+
+        &:nth-child(odd) {
+            margin-right: @size-xl;
+        }
+
+        &-avatar {
+            flex: 0 0 @course-avatar-size;
+
+            margin: @size-xl @size-xl @size-xl 0;
+            width: @course-avatar-size;
+            height: @course-avatar-size;
+
+            border-radius: @border-radius;
+            background-color: @light-green2;
+        }
+
+        &-info {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            & > p {
+                & + * {
+                    margin-top: @size-m;
+                }
+            }
+        }
+    }
+}

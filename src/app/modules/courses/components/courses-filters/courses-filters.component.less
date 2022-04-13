@@ -1,0 +1,64 @@
+@import "../../../../../assets/styles/variables";
+@import "../../../../../assets/styles/fonts";
+@import "../../../../../assets/styles/colors";
+
+@section-max-height: 220px;
+@list-item-height: 32px;
+@active-bg-color: #C6E3CD;
+@active-border-color: #008A0E;
+@filters-width: 280px;
+
+.ep-courses-filters {
+    height: 100%;
+    width: @filters-width;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 100px;
+
+    &__direction,
+    &__duration,
+    &__difficult {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        max-height: @section-max-height;
+
+        &-title {
+            color: @main;
+            .font-bold-size-height(20px, 28px);
+        }
+
+        &-list {
+            width: 100%;
+            &-item {
+                margin-top: @size-sm;
+                padding: @size-xs @size-m;
+                height: @list-item-height;
+                width: 100%;
+
+                border: 1px solid transparent;
+                border-radius: @size-xl;
+                text-align: center;
+                cursor: pointer;
+
+                &._active {
+                    background-color: @active-bg-color;
+                    border-color: @active-border-color;
+                }
+            }
+        }
+
+        &-input {
+            margin-top: @size-m;
+            width: 100%;
+            input {
+                width: 100%;
+            }
+        }
+    }
+}

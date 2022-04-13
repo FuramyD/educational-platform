@@ -35,6 +35,7 @@
                         "style": "kebab-case"
                     }
                 ],
+               "ngrx/no-multiple-actions-in-effects": "off",
                 "quotes": [
                     "warn",
                     "double",

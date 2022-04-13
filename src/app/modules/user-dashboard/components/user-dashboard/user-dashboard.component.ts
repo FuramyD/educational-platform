@@ -20,6 +20,8 @@ export class UserDashboardComponent implements OnInit {
             { name: "Section #3", link: "", color: SectionColors.LIGHT_GREEN },
             { name: "Section #4", link: "", color: SectionColors.DIRTY_GREEN },
         ];
+
+
     }
 
     _getBackgroundForSections(color: string): string {

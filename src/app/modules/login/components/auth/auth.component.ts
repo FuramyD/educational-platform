@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, Inject, OnInit, ViewEncapsulation } from "@angular/core";
 import { RxUnsubscribe } from "../../../../common/helpers/unsubscribe";
 import { AuthService } from "../../../../services/auth.service";
 import { takeUntil } from "rxjs";
@@ -10,7 +10,8 @@ import { LOCAL_STORAGE } from "../../../../common/tokens/browser.tokens";
 @Component({
     selector: "ep-auth",
     templateUrl: "./auth.component.html",
-    styleUrls: ["./auth.component.less"]
+    styleUrls: ["./auth.component.less"],
+    encapsulation: ViewEncapsulation.None
 })
 export class AuthComponent extends RxUnsubscribe implements OnInit {
 

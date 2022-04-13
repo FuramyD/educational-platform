@@ -11,6 +11,7 @@ import {
 import { RestApiService } from "./rest-api.service";
 import { LOCAL_STORAGE } from "../common/tokens/browser.tokens";
 import { ACCESS_TOKEN } from "../common/constants/api.constants";
+import { apiRoutes } from "../api/api.routes";
 
 @Injectable({
     providedIn: "root"
@@ -22,6 +23,10 @@ export class AuthService {
         private http: HttpClient,
         private restApiService: RestApiService
     ) {}
+
+    private static getUrl(name: string): string {
+        return `${apiRoutes.gateways.publicGateWay}/${apiRoutes.urls[name]}`;
+    }
 
     public getAuthorizationOptions(): RestApiRequestOptions {
         const token = this.localStorageRef.getItem(ACCESS_TOKEN);
@@ -36,15 +41,7 @@ export class AuthService {
     }
 
     public login(loginParameters: LoginParameters): Observable<ProfileResponse> {
-        // const url = `${apiRoutes.gateways.publicGateWay}/${apiRoutes.urls["login"]}`;
-        // return this.http.post<AuthorizationResponse>(url, loginParameters).pipe(
-        //     switchMap((response: AuthorizationResponse) => {
-        //         this.localStorageRef.setItem(ACCESS_TOKEN, response.accessToken);
-        //         return this.getCurrentProfile();
-        //     })
-        // );
-
-        return this.restApiService.post<AuthorizationResponse>("login", loginParameters).pipe(
+        return this.http.post<AuthorizationResponse>(AuthService.getUrl("login"), loginParameters).pipe(
             switchMap((response: AuthorizationResponse) => {
                 this.localStorageRef.setItem(ACCESS_TOKEN, response.accessToken);
                 return this.getCurrentProfile();
@@ -53,9 +50,7 @@ export class AuthService {
     }
 
     public registration(registrationParameters: RegistrationParameters): Observable<RegistrationResponse> {
-        // const url = `${apiRoutes.gateways.publicGateWay}/${apiRoutes.urls["registration"]}`;
-        // return this.http.post<RegistrationResponse>(url, registrationParameters);
-        return this.restApiService.post<RegistrationResponse>("registration", registrationParameters);
+        return this.http.post<RegistrationResponse>(AuthService.getUrl("registration"), registrationParameters);
     }
 
     public restorePassword(email: string): Observable<boolean> {

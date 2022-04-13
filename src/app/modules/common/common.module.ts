@@ -9,6 +9,7 @@ import { PasswordFieldComponent } from "./form-fields/password-field/password-fi
 import { AbstractFieldComponent } from "./form-fields/abstract-field/abstract-field.component";
 import { HeaderComponent } from "./header/header.component";
 import { ProfileSidebarComponent } from "../../common/profile-sidebar/profile-sidebar.component";
+import { DurationPipe } from "./pipes/duration.pipe";
 
 @NgModule({
     declarations: [
@@ -17,14 +18,16 @@ import { ProfileSidebarComponent } from "../../common/profile-sidebar/profile-si
         PasswordFieldComponent,
         AbstractFieldComponent,
         HeaderComponent,
-        ProfileSidebarComponent
+        ProfileSidebarComponent,
+        DurationPipe
     ],
     exports: [
         NavigationBarComponent,
         TextFieldComponent,
         PasswordFieldComponent,
         HeaderComponent,
-        ProfileSidebarComponent
+        ProfileSidebarComponent,
+        DurationPipe
     ],
     imports: [
         CommonModule,

@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../../../services/auth.service";
 import { Router } from "@angular/router";
@@ -15,6 +15,7 @@ import { LoginParameters } from "../../../../models/login.model";
     selector: "ep-login",
     templateUrl: "./login.component.html",
     styleUrls: ["./login.component.less"],
+    encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent extends RxUnsubscribe implements OnInit, OnDestroy {
 
@@ -52,7 +53,6 @@ export class LoginComponent extends RxUnsubscribe implements OnInit, OnDestroy {
         this.authService.login(this._formGroup.value)
             .pipe(
                 catchError(({ error }: HttpErrorResponse) => {
-                    console.log("error:", error);
                     this._error = error.message;
                     return EMPTY;
                 }),
