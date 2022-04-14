@@ -18,7 +18,7 @@
                      [class._active]="theme === _openedTheme"
                      (click)="_openTheme(theme)">
                     <svg-icon class="icon" key="content_theme" size="xxl"></svg-icon>
-                    {{ theme.name }}
+                    <span>{{ theme.name }}</span>
                 </div>
                 <ng-container *ngFor="let lesson of theme.lessons">
                     <div class="ep-course__content-list__lesson-item"
@@ -26,7 +26,7 @@
                          (click)="_openLesson(theme, lesson)"
                     >
                         <svg-icon class="icon" key="content_lesson" size="xxl"></svg-icon>
-                        {{ lesson.name }}
+                        <span>{{ lesson.name }}</span>
                     </div>
                 </ng-container>
             </ng-container>
@@ -35,7 +35,7 @@
                  (click)="_openTest()"
             >
                 <svg-icon class="icon" key="content_test" size="xxl"></svg-icon>
-                {{ "Итоговый тест" }}
+                <span>{{ "Итоговый тест" }}</span>
             </div>
         </div>
     </div>

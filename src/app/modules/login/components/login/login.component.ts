@@ -10,6 +10,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { RxUnsubscribe } from "../../../../common/helpers/unsubscribe";
 import { CREDENTIALS } from "../../../../common/constants/api.constants";
 import { LoginParameters } from "../../../../models/login.model";
+import { GeneralHelper } from "../../../../common/helpers/general.helper";
 
 @Component({
     selector: "ep-login",
@@ -20,8 +21,8 @@ import { LoginParameters } from "../../../../models/login.model";
 export class LoginComponent extends RxUnsubscribe implements OnInit, OnDestroy {
 
     constructor(
-        @Inject(LOCATION) private locationRef: Location,
         @Inject(LOCAL_STORAGE) private localStorageRef: Storage,
+        @Inject(LOCATION) private locationRef: Location,
         private router: Router,
         private authService: AuthService
     ) {
@@ -34,7 +35,7 @@ export class LoginComponent extends RxUnsubscribe implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         const credentials: LoginParameters = JSON.parse(this.localStorageRef.getItem(CREDENTIALS));
-        this._message = new URLSearchParams().get("message")?.[0];
+        this._message = GeneralHelper.getQueryParameterFromURL("message", this.locationRef);
 
         this._formGroup = new FormGroup({
             login: new FormControl(credentials?.login ?? null, [Validators.required]),

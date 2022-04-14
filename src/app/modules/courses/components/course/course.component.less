@@ -146,9 +146,6 @@
                         .is-completed {
                             width: @completed-icon-size;
                             height: @completed-icon-size;
-
-                            //vertical-align: middle;
-                            //text-align: center;
                         }
                     }
                 }
@@ -210,7 +207,7 @@
     }
 
     &__content {
-        width: 20%;
+        width: 25%;
         &-title {
             .font-extra-bold-size-height(20px, 64px);
             margin-bottom: @size-xl;
@@ -226,7 +223,7 @@
 
                 padding: @size-s;
 
-                display: flex;
+                display: inline-flex;
                 align-items: center;
 
                 border: 1px solid @gray;
@@ -239,17 +236,25 @@
                 }
 
                 .icon {
+                    width: 56px;
+                    height: 40px;
                     margin-right: @size-s;
+                }
+
+                span {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                 }
             }
 
             &__theme-item, &__test-item {
-                .font-bold-size-height(20px, 28px);
+                .font-bold-size-height(20px, @content-item-height);
                 text-transform: uppercase;
             }
 
             &__lesson-item {
-                .font-medium-size-height(20px, 28px);
+                .font-medium-size-height(20px, @content-item-height);
             }
         }
     }

@@ -41,7 +41,7 @@ export class AuthService {
     }
 
     public login(loginParameters: LoginParameters): Observable<ProfileResponse> {
-        return this.http.post<AuthorizationResponse>(AuthService.getUrl("login"), loginParameters).pipe(
+        return this.restApiService.post<AuthorizationResponse>("login", loginParameters).pipe(
             switchMap((response: AuthorizationResponse) => {
                 this.localStorageRef.setItem(ACCESS_TOKEN, response.accessToken);
                 return this.getCurrentProfile();
@@ -50,7 +50,7 @@ export class AuthService {
     }
 
     public registration(registrationParameters: RegistrationParameters): Observable<RegistrationResponse> {
-        return this.http.post<RegistrationResponse>(AuthService.getUrl("registration"), registrationParameters);
+        return this.restApiService.post<RegistrationResponse>("registration", registrationParameters);
     }
 
     public restorePassword(email: string): Observable<boolean> {

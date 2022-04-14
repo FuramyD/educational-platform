@@ -70,7 +70,7 @@ export class CoursesService {
             { id: "3trq", name: "SQL", direction: "Программирование", duration: 6, image: "", description: "Описание курса",
                 themes: [
                     {
-                        name: "Тема 1",
+                        name: "SQL Тема 1",
                         lessons: [
                             {
                                 name: "Урок 1",
@@ -79,23 +79,63 @@ export class CoursesService {
                                     <p>Вот это <strong>КОНТЕНТ</strong> конечно... :)</p>
                                     <img src="https://cache.desktopnexus.com/thumbseg/1529/1529656-bigthumbnail.jpg" alt="Птичка">
                                 ` },
-                            { name: "Урок 2", completed: false },
-                            { name: "Урок 3", completed: false },
+                            { name: "Урок 2", completed: false, content: "Контент для урока 2" },
+                            { name: "Урок 3", completed: false, content: `<b>Контент для урока 3</b>` },
                         ]
                     },
                     {
-                        name: "Тема 2",
+                        name: "SQL Тема 2",
                         lessons: [
-                            { name: "Урок 1", completed: false },
-                            { name: "Урок 2", completed: true },
+                            { name: "Урок 1", completed: false, content: "Контент для урока 2.1" },
+                            { name: "Урок 2", completed: true, content: "Контент для урока 2.2" },
                         ]
                     }
                 ]
             },
-            { id: "4tweg246yt", name: "JavaScript", direction: "Программирование", duration: 3, image: "" },
-            { id: "4t2etg2y2", name: "Angular", direction: "Программирование", duration: 6, image: "" },
-            { id: "24y2ewgwh", name: "Spring Boot", direction: "Программирование", duration: 12, image: "" },
-            { id: "3tyjukyrq", name: "Python", direction: "Программирование", duration: 6, image: "" },
+            { id: "4tweg246yt", name: "JavaScript", direction: "Программирование", duration: 3, image: "", themes: [
+                {
+                    name: "JavaScript Тема 2",
+                    lessons: [
+                        { name: "Урок 1", completed: false, content: "Контент для урока 1" },
+                        { name: "Урок 2", completed: true, content: "Контент для урока 2" },
+                    ]
+                }
+            ] },
+            { id: "4t2etg2y2", name: "Angular", direction: "Программирование", duration: 6, image: "", themes: [
+                {
+                    name: "Angular Тема 2",
+                    lessons: [
+                        { name: "Урок 1", completed: false, content: "Контент для урока 1" },
+                        { name: "Урок 2", completed: true, content: "Контент для урока 2" },
+                    ]
+                }
+            ] },
+            { id: "24y2ewgwh", name: "Spring Boot", direction: "Программирование", duration: 12, image: "", themes: [
+                {
+                    name: "Spring Boot Конфигурация",
+                    lessons: [
+                        { name: "DI и IOC Теория", completed: false, content: `
+                            «Внедрение зависимостей» — это выражение, впервые использованное в статье Мартина Фаулера
+                             <a href="https://www.martinfowler.com/articles/injection.html">Inversion of Control Containers and the Dependency Injection Pattern</a>. Это хорошая статья,
+                              но она упускает из виду некоторые преимущества контейнеров внедрения зависимостей.
+                               Также я не согласен с выводами статьи, но об этом — в следующих текстах.
+                        ` },
+                        { name: "Бины", completed: true, content: "Контент для урока 2" },
+                        { name: "Параметры", completed: true, content: "Контент для урока 3" },
+                    ]
+                }
+            ] },
+            { id: "3tyjukyrq", name: "Python", direction: "Программирование", duration: 6, image: "", themes: [
+                {
+                    name: "Python Тема 2",
+                    lessons: [
+                        { name: "Урок 1", completed: false, content: "Контент для урока по Python #1" },
+                        { name: "Урок 2", completed: true, content: "Контент для урока по Python #2" },
+                        { name: "Урок 3", completed: true, content: "Контент для урока по Python #3" },
+                        { name: "Урок 4", completed: true, content: "Контент для урока по Python #4" },
+                    ]
+                }
+            ] },
         ]);
     }
 

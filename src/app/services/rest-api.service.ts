@@ -45,7 +45,7 @@ export class RestApiService {
         }
 
         return request.pipe(
-            catchError(error => RestApiService.handleError(error))
+            // catchError(error => RestApiService.handleError(error))
         ) as Observable<T>;
     };
 

@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Course, Lesson, Theme } from "../../../../models/course.model";
 
 @Component({
@@ -6,7 +6,7 @@ import { Course, Lesson, Theme } from "../../../../models/course.model";
     templateUrl: "./course.component.html",
     styleUrls: ["./course.component.less"]
 })
-export class CourseComponent implements OnInit {
+export class CourseComponent {
 
     @Output() closed: EventEmitter<void> = new EventEmitter<void>();
 
@@ -34,9 +34,6 @@ export class CourseComponent implements OnInit {
     }
 
     constructor() { }
-
-    ngOnInit(): void {
-    }
 
     _closeCourse(): void {
         this.closed.emit();
